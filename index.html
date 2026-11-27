@@ -3,43 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>짠내투어 - 지갑은 가볍게, 여행은 설레게! 초저가 맞춤 여행 플래너</title>
+  <title>짠내투어 — 초저가 맞춤 여행 플래너</title>
   <style>
+    @font-face {
+      font-family: 'GmarketSans';
+      font-weight: 300;
+      font-style: normal;
+      src: local('Gmarket Sans Light'), local('GmarketSansLight'),
+           url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GmarketSans';
+      font-weight: 400;
+      font-style: normal;
+      src: local('Gmarket Sans Medium'), local('GmarketSansMedium'),
+           url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GmarketSans';
+      font-weight: 500;
+      font-style: normal;
+      src: local('Gmarket Sans Medium'), local('GmarketSansMedium'),
+           url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'GmarketSans';
+      font-weight: 700;
+      font-style: normal;
+      src: local('Gmarket Sans Bold'), local('GmarketSansBold'),
+           url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+      font-display: swap;
+    }
+
     :root {
-      --bg-page: #F4F7FA;
+      --bg-page: #F7F8FA;
       --bg-card: #FFFFFF;
-      --bg-subtle: #EDF2F7;
-      --bg-highlight: #E0F2FE;
-      --bg-mint: #ECFDF5;
-      --bg-warm: #FFF7ED;
+      --bg-subtle: #F2F4F6;
+      --bg-hover: #E9ECEF;
 
-      --primary: #0284C7;
-      --primary-dark: #0369A1;
-      --primary-light: #38BDF8;
-      --accent: #F97316;
-      --accent-dark: #EA580C;
-      --mint: #059669;
-      --danger: #DC2626;
+      --ink-main: #191F28;
+      --ink-sub: #4E5968;
+      --ink-muted: #8B95A1;
 
-      --text-main: #0F172A;
-      --text-sub: #334155;
-      --text-muted: #64748B;
-      --border: #CBD5E1;
-      --border-light: #E2E8F0;
+      --accent: #2563EB;
+      --accent-dark: #1D4ED8;
+      --accent-soft: #EFF6FF;
 
-      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 6px 18px rgba(15, 23, 42, 0.09);
-      --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.14);
+      --success: #0F766E;
+      --success-soft: #F0FDFA;
+      --warning: #B45309;
+      --warning-soft: #FFFBEB;
+      --danger: #BE123C;
+      --danger-soft: #FFF1F2;
 
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 22px;
+      --border: #D1D6DB;
+      --border-light: #E5E8EB;
 
-      --base-font: 17px;
+      --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+      --shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.05);
+      --shadow-float: 0 -2px 12px rgba(16, 24, 40, 0.06);
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+
+      --font-sans: 'GmarketSans', 'Gmarket Sans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      --base-font: 16px;
     }
 
     html.font-xlarge {
-      --base-font: 20px;
+      --base-font: 19px;
     }
 
     * {
@@ -55,32 +94,44 @@
     }
 
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+      font-family: var(--font-sans);
+      font-weight: 400;
       background-color: var(--bg-page);
-      color: var(--text-main);
-      line-height: 1.55;
-      padding-bottom: 135px;
+      color: var(--ink-main);
+      line-height: 1.6;
+      padding-bottom: 132px;
       word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* 상단 헤더 */
+    button, input, select {
+      font-family: var(--font-sans);
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    /* 상단 헤더: 미니멀 화이트 + 헤어라인 보더 */
     .app-header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 60%, #14B8A6 100%);
-      color: #FFFFFF;
-      padding: 14px 16px;
-      box-shadow: var(--shadow-md);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 16px;
     }
 
     .header-inner {
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
     }
 
     .brand {
@@ -89,11 +140,12 @@
       gap: 10px;
     }
 
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--ink-main);
+      color: #FFFFFF;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -101,112 +153,111 @@
     }
 
     .brand-title {
-      font-size: 1.25rem;
-      font-weight: 800;
+      font-size: 1.15rem;
+      font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.2;
+      color: var(--ink-main);
+      line-height: 1.25;
     }
 
     .brand-sub {
-      font-size: 0.78rem;
-      opacity: 0.92;
-      font-weight: 500;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      font-weight: 400;
     }
 
     .font-toggle-btn {
-      background: rgba(255, 255, 255, 0.22);
-      border: 1.5px solid rgba(255, 255, 255, 0.65);
-      color: #FFFFFF;
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--ink-main);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 13px;
       border-radius: 999px;
       cursor: pointer;
-      min-height: 42px;
+      min-height: 38px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: background 0.2s;
+      gap: 5px;
+      transition: all 0.15s ease;
     }
 
-    .font-toggle-btn:hover,
+    .font-toggle-btn:hover {
+      background: var(--bg-subtle);
+    }
+
     .font-toggle-btn.active {
-      background: #FFFFFF;
-      color: var(--primary-dark);
+      background: var(--ink-main);
+      color: #FFFFFF;
+      border-color: var(--ink-main);
     }
 
-    /* 데스크톱 상단 내비게이션 */
+    /* 데스크톱 상단 언더라인 탭 */
     .desktop-nav {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border-light);
       position: sticky;
-      top: 70px;
+      top: 59px;
       z-index: 90;
     }
 
     .desktop-nav-inner {
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-      padding: 6px 12px;
+      display: flex;
+      gap: 8px;
+      padding: 0 16px;
     }
 
     .nav-tab-btn {
       background: transparent;
       border: none;
-      padding: 12px 8px;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-sub);
+      border-bottom: 2px solid transparent;
+      padding: 14px 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-muted);
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 6px;
-      min-height: 48px;
-      transition: all 0.2s;
-      position: relative;
+      transition: color 0.15s, border-color 0.15s;
     }
 
     .nav-tab-btn:hover {
-      background: var(--bg-subtle);
-      color: var(--primary);
+      color: var(--ink-main);
     }
 
     .nav-tab-btn.active {
-      background: var(--bg-highlight);
-      color: var(--primary-dark);
+      color: var(--ink-main);
+      font-weight: 700;
+      border-bottom-color: var(--ink-main);
     }
 
     .badge-count {
-      background: var(--accent);
-      color: #FFFFFF;
+      background: var(--bg-subtle);
+      color: var(--ink-main);
       font-size: 0.72rem;
-      font-weight: 800;
+      font-weight: 700;
       padding: 2px 7px;
       border-radius: 999px;
-      line-height: 1.2;
+    }
+
+    .nav-tab-btn.active .badge-count {
+      background: var(--ink-main);
+      color: #FFFFFF;
     }
 
     /* 메인 컨테이너 */
     .container {
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
-      padding: 18px 14px 28px;
+      padding: 24px 16px 32px;
     }
 
     .tab-section {
       display: none;
-      animation: fadeIn 0.25s ease;
+      animation: fadeIn 0.2s ease;
     }
 
     .tab-section.active {
@@ -214,53 +265,54 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 공통 카드 & 제목 */
-    .card {
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      padding: 20px 18px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border-light);
-      margin-bottom: 16px;
-    }
-
+    /* 에디토리얼 섹션 헤더 */
     .section-header {
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    .section-tag {
-      display: inline-block;
-      background: var(--bg-highlight);
-      color: var(--primary-dark);
-      font-size: 0.78rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 6px;
+    .section-eyebrow {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+      display: block;
     }
 
     .section-title {
       font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-main);
-      line-height: 1.3;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-main);
+      line-height: 1.35;
     }
 
     .section-desc {
-      font-size: 0.92rem;
-      color: var(--text-sub);
-      margin-top: 4px;
+      font-size: 0.88rem;
+      color: var(--ink-sub);
+      margin-top: 5px;
     }
 
-    /* 컨트롤 폼 요소 (큰 터치 영역) */
+    /* 기본 서피스 카드 */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-xs);
+      margin-bottom: 16px;
+    }
+
+    /* 컨트롤 폼 요소 */
     .control-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 20px;
     }
 
     @media (min-width: 680px) {
@@ -275,114 +327,145 @@
     .form-group label {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
+      align-items: baseline;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--ink-sub);
+      margin-bottom: 10px;
     }
 
     .budget-display {
-      font-size: 1.25rem;
-      font-weight: 900;
+      font-size: 1.32rem;
+      font-weight: 700;
       color: var(--accent);
+      letter-spacing: -0.02em;
     }
 
     input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
       width: 100%;
-      height: 10px;
+      height: 6px;
       border-radius: 999px;
       background: var(--border-light);
       outline: none;
-      accent-color: var(--primary);
       cursor: pointer;
-      margin: 8px 0 12px;
+      margin: 6px 0 14px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2.5px solid var(--ink-main);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+      cursor: pointer;
+      transition: transform 0.12s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2.5px solid var(--ink-main);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+      cursor: pointer;
     }
 
     .chip-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
 
     .chip-btn {
-      background: var(--bg-subtle);
-      border: 1.5px solid transparent;
-      color: var(--text-sub);
-      font-size: 0.88rem;
-      font-weight: 700;
-      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--ink-sub);
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 8px 14px;
       border-radius: 999px;
       cursor: pointer;
-      min-height: 44px;
-      transition: all 0.15s;
+      min-height: 40px;
+      transition: all 0.15s ease;
     }
 
     .chip-btn:hover {
-      border-color: var(--primary-light);
-      color: var(--primary-dark);
+      border-color: var(--ink-main);
+      color: var(--ink-main);
     }
 
     .chip-btn.active {
-      background: var(--primary);
+      background: var(--ink-main);
       color: #FFFFFF;
-      border-color: var(--primary);
+      border-color: var(--ink-main);
+      font-weight: 700;
     }
 
     select.styled-select,
     input.styled-input {
       width: 100%;
-      min-height: 50px;
+      min-height: 46px;
       padding: 10px 14px;
-      font-size: 0.96rem;
-      font-weight: 600;
-      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-main);
       background: var(--bg-card);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      font-family: inherit;
+      transition: border-color 0.15s;
     }
 
     select.styled-select:focus,
     input.styled-input:focus {
       outline: none;
-      border-color: var(--primary);
+      border-color: var(--ink-main);
     }
 
-    /* 버튼 스타일 */
+    /* 버튼 시스템 */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      min-height: 48px;
-      padding: 11px 16px;
-      font-size: 0.94rem;
-      font-weight: 700;
+      min-height: 46px;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
       border-radius: var(--radius-sm);
-      border: none;
+      border: 1px solid transparent;
       cursor: pointer;
-      font-family: inherit;
-      transition: transform 0.1s, background 0.15s;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
       text-align: center;
     }
 
     .btn:active {
-      transform: scale(0.98);
+      transform: scale(0.99);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--ink-main);
       color: #FFFFFF;
+      font-weight: 700;
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
+      background: #2B3440;
     }
 
     .btn-accent {
       background: var(--accent);
       color: #FFFFFF;
+      font-weight: 700;
     }
 
     .btn-accent:hover {
@@ -390,36 +473,59 @@
     }
 
     .btn-mint {
-      background: var(--mint);
-      color: #FFFFFF;
+      background: var(--success-soft);
+      color: var(--success);
+      border-color: #99F6E4;
+      font-weight: 700;
     }
 
     .btn-outline {
       background: var(--bg-card);
-      color: var(--primary-dark);
-      border: 2px solid var(--primary);
+      color: var(--ink-main);
+      border-color: var(--border);
     }
 
     .btn-outline:hover {
-      background: var(--bg-highlight);
+      background: var(--bg-subtle);
+      border-color: var(--ink-main);
     }
 
     .btn-ghost {
       background: var(--bg-subtle);
-      color: var(--text-sub);
+      color: var(--ink-sub);
+    }
+
+    .btn-ghost:hover {
+      background: var(--bg-hover);
+      color: var(--ink-main);
     }
 
     .btn-danger-outline {
-      background: #FEF2F2;
+      background: var(--bg-card);
       color: var(--danger);
-      border: 1.5px solid #FECACA;
+      border-color: #FECDD3;
+    }
+
+    .btn-danger-outline:hover {
+      background: var(--danger-soft);
     }
 
     .btn-block {
       width: 100%;
     }
 
-    /* 여행지 카드 리스트 */
+    /* 결과 카운트 바 */
+    .result-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0 12px;
+      font-size: 0.86rem;
+      color: var(--ink-sub);
+      font-weight: 500;
+    }
+
+    /* 여행지 카드 그리드 */
     .dest-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -435,143 +541,177 @@
     .dest-card {
       background: var(--bg-card);
       border-radius: var(--radius-md);
-      border: 2px solid var(--border-light);
-      padding: 18px;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-xs);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      position: relative;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+
+    .dest-card:hover {
+      border-color: var(--border);
+      box-shadow: var(--shadow-sm);
     }
 
     .dest-card.selected {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.16);
+      border: 1.5px solid var(--ink-main);
     }
 
     .dest-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .dest-emoji {
-      font-size: 2.1rem;
-      line-height: 1;
-      background: var(--bg-subtle);
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .dest-title-wrap {
-      flex: 1;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .dest-region {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--primary);
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: 3px;
     }
 
     .dest-name {
       font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text-main);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .days-tag {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--ink-sub);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
     }
 
     .bookmark-btn {
-      background: var(--bg-subtle);
-      border: none;
-      width: 44px;
-      height: 44px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      font-size: 1.25rem;
+      color: var(--ink-muted);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .bookmark-btn:hover {
+      border-color: var(--border);
+      color: var(--ink-main);
     }
 
     .bookmark-btn.saved {
-      background: #FEF3C7;
+      background: var(--ink-main);
+      border-color: var(--ink-main);
+      color: #FFFFFF;
     }
 
     .status-pill {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.77rem;
+      font-weight: 700;
       padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
     }
 
     .pill-fit {
-      background: var(--bg-mint);
-      color: var(--mint);
+      background: var(--success-soft);
+      color: var(--success);
     }
 
     .pill-tight {
-      background: var(--bg-warm);
-      color: var(--accent-dark);
+      background: var(--warning-soft);
+      color: var(--warning);
     }
 
     .pill-over {
-      background: #FEF2F2;
+      background: var(--danger-soft);
       color: var(--danger);
     }
 
     .dest-desc {
-      font-size: 0.92rem;
-      color: var(--text-sub);
-      margin-bottom: 12px;
+      font-size: 0.88rem;
+      color: var(--ink-sub);
+      margin-bottom: 16px;
+      line-height: 1.65;
     }
 
     .cost-breakdown {
-      background: var(--bg-page);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      margin-bottom: 12px;
-      font-size: 0.88rem;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 0;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
     }
 
     .cost-row {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 4px;
-      color: var(--text-sub);
+      align-items: center;
+      margin-bottom: 6px;
+      color: var(--ink-sub);
     }
 
     .cost-row.total {
       border-top: 1px dashed var(--border);
-      padding-top: 6px;
-      margin-top: 6px;
+      padding-top: 9px;
+      margin-top: 8px;
       margin-bottom: 0;
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--ink-main);
     }
 
     .cost-row.total span:last-child {
-      color: var(--primary-dark);
+      color: var(--accent);
     }
 
     .saving-tip-box {
-      background: var(--bg-warm);
-      border-left: 4px solid var(--accent);
-      padding: 9px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      color: #7C2D12;
-      margin-bottom: 14px;
+      background: var(--bg-subtle);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--ink-sub);
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .tip-label {
+      display: inline-block;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--ink-main);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-right: 5px;
+      vertical-align: 1px;
     }
 
     .dest-actions {
@@ -580,23 +720,47 @@
       gap: 8px;
     }
 
-    /* MVP 2: 항공/교통 & 숙소 옵션 카드 */
+    /* MVP 2: 항공/교통 & 숙소 옵션 리스트 */
+    .card-heading {
+      font-size: 1.06rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink-main);
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 0.84rem;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+    }
+
+    .tip-banner {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      padding: 11px 14px;
+      font-size: 0.84rem;
+      color: var(--ink-sub);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+
     .option-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .option-item {
-      border: 2px solid var(--border-light);
-      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
       padding: 16px;
       background: var(--bg-card);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: border-color 0.15s, background 0.15s;
     }
 
     @media (min-width: 640px) {
@@ -607,40 +771,49 @@
       }
     }
 
+    .option-item:hover {
+      border-color: var(--border);
+    }
+
     .option-item.selected {
-      border-color: var(--primary);
-      background: #F0F9FF;
+      border: 1.5px solid var(--ink-main);
+      background: #FAFAFB;
     }
 
     .option-badge {
       display: inline-block;
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 3px 9px;
-      border-radius: 6px;
-      background: var(--bg-mint);
-      color: var(--mint);
-      margin-bottom: 4px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: var(--bg-subtle);
+      color: var(--ink-sub);
+      margin-bottom: 6px;
+    }
+
+    .option-item.selected .option-badge {
+      background: var(--accent-soft);
+      color: var(--accent);
     }
 
     .option-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--text-main);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--ink-main);
     }
 
     .option-meta {
-      font-size: 0.88rem;
-      color: var(--text-sub);
-      margin-top: 2px;
+      font-size: 0.83rem;
+      color: var(--ink-muted);
+      margin-top: 3px;
     }
 
     .option-price-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      border-top: 1px dashed var(--border-light);
+      gap: 14px;
+      border-top: 1px solid var(--border-light);
       padding-top: 10px;
     }
 
@@ -656,14 +829,14 @@
     }
 
     .option-price {
-      font-size: 1.18rem;
-      font-weight: 900;
-      color: var(--accent-dark);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink-main);
     }
 
     .option-price-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.74rem;
+      color: var(--ink-muted);
     }
 
     /* MVP 3: 관광지 추천 카드 */
@@ -681,102 +854,107 @@
 
     .spot-card {
       background: var(--bg-card);
-      border: 1.5px solid var(--border-light);
+      border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
+      transition: border-color 0.15s;
     }
 
     .spot-card.added {
-      border-color: var(--mint);
-      background: #F6FEF9;
+      border: 1.5px solid var(--success);
     }
 
     .spot-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 8px;
+      margin-bottom: 8px;
     }
 
     .spot-cat {
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--primary);
-      background: var(--bg-highlight);
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--ink-sub);
+      background: var(--bg-subtle);
       padding: 3px 8px;
-      border-radius: 6px;
+      border-radius: 5px;
     }
 
     .spot-price-tag {
-      font-size: 0.85rem;
-      font-weight: 800;
-      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 9px;
       border-radius: 999px;
-      background: var(--bg-mint);
-      color: var(--mint);
+      background: var(--success-soft);
+      color: var(--success);
       white-space: nowrap;
     }
 
     .spot-price-tag.paid {
-      background: var(--bg-warm);
-      color: var(--accent-dark);
+      background: var(--accent-soft);
+      color: var(--accent);
     }
 
     .spot-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin: 6px 0 4px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink-main);
+      margin-bottom: 5px;
     }
 
     .spot-desc {
-      font-size: 0.9rem;
-      color: var(--text-sub);
+      font-size: 0.86rem;
+      color: var(--ink-sub);
+      line-height: 1.6;
     }
 
     .spot-tip {
-      font-size: 0.84rem;
-      color: var(--primary-dark);
-      background: var(--bg-page);
-      padding: 8px 10px;
-      border-radius: 8px;
-      margin-top: 8px;
+      font-size: 0.81rem;
+      color: var(--ink-sub);
+      background: var(--bg-subtle);
+      padding: 9px 11px;
+      border-radius: var(--radius-sm);
+      margin-top: 10px;
     }
 
-    /* 내 플랜 & 체크리스트 */
+    /* 내 플랜 견적 요약 배너 (에디토리얼 스타일) */
     .summary-banner {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-      color: #FFFFFF;
+      background: var(--bg-card);
+      border: 1.5px solid var(--ink-main);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 22px 20px;
       margin-bottom: 16px;
     }
 
     .summary-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .summary-stat {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px;
+      background: var(--bg-subtle);
+      padding: 12px 14px;
       border-radius: var(--radius-sm);
     }
 
     .summary-stat-label {
-      font-size: 0.8rem;
-      opacity: 0.82;
+      font-size: 0.77rem;
+      color: var(--ink-sub);
+      font-weight: 500;
     }
 
     .summary-stat-val {
-      font-size: 1.18rem;
-      font-weight: 800;
-      margin-top: 2px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--ink-main);
+      margin-top: 3px;
     }
 
     .checklist-item {
@@ -784,7 +962,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 12px;
+      padding: 12px 4px;
       border-bottom: 1px solid var(--border-light);
     }
 
@@ -798,21 +976,22 @@
       gap: 12px;
       cursor: pointer;
       flex: 1;
-      font-size: 0.96rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink-main);
     }
 
     .checklist-label input[type="checkbox"] {
-      width: 24px;
-      height: 24px;
-      accent-color: var(--mint);
+      width: 20px;
+      height: 20px;
+      accent-color: var(--ink-main);
       cursor: pointer;
       flex-shrink: 0;
     }
 
     .checklist-label.done span {
       text-decoration: line-through;
-      color: var(--text-muted);
+      color: var(--ink-muted);
     }
 
     /* 하단 실시간 견적 바 + 모바일 내비게이션 */
@@ -822,40 +1001,42 @@
       left: 0;
       right: 0;
       z-index: 110;
-      background: var(--bg-card);
-      border-top: 2px solid var(--primary-light);
-      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.1);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-light);
+      box-shadow: var(--shadow-float);
     }
 
     .mini-budget-bar {
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
-      padding: 8px 14px;
+      padding: 9px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      background: #F0F9FF;
       border-bottom: 1px solid var(--border-light);
     }
 
     .mini-budget-info {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.3;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--ink-sub);
+      line-height: 1.4;
     }
 
     .mini-budget-price {
-      color: var(--primary-dark);
-      font-size: 1rem;
-      font-weight: 900;
+      color: var(--ink-main);
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-left: 4px;
     }
 
     .mobile-bottom-nav {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      max-width: 960px;
+      max-width: 920px;
       margin: 0 auto;
     }
 
@@ -867,26 +1048,27 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--text-muted);
+      gap: 4px;
+      font-size: 0.73rem;
+      font-weight: 500;
+      color: var(--ink-muted);
       cursor: pointer;
       position: relative;
     }
 
     .mobile-nav-btn.active {
-      color: var(--primary);
+      color: var(--ink-main);
+      font-weight: 700;
     }
 
     .mobile-badge {
       position: absolute;
-      top: 4px;
-      right: 18%;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 800;
+      top: 5px;
+      right: 22%;
+      background: var(--ink-main);
+      color: #FFFFFF;
+      font-size: 0.63rem;
+      font-weight: 700;
       padding: 1px 5px;
       border-radius: 999px;
     }
@@ -896,7 +1078,7 @@
         display: none;
       }
       body {
-        padding-bottom: 76px;
+        padding-bottom: 68px;
       }
     }
 
@@ -909,19 +1091,19 @@
     /* 토스트 알림 */
     .toast {
       position: fixed;
-      top: 84px;
+      top: 74px;
       left: 50%;
-      transform: translateX(-50%) translateY(-20px);
-      background: #0F172A;
+      transform: translateX(-50%) translateY(-14px);
+      background: var(--ink-main);
       color: #FFFFFF;
-      padding: 12px 20px;
+      padding: 11px 18px;
       border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      box-shadow: var(--shadow-lg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.18);
       opacity: 0;
       pointer-events: none;
-      transition: all 0.25s ease;
+      transition: all 0.22s ease;
       z-index: 200;
       max-width: 92vw;
       text-align: center;
@@ -934,19 +1116,9 @@
 
     .empty-state {
       text-align: center;
-      padding: 32px 16px;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .tip-banner {
-      background: var(--bg-mint);
-      border: 1.5px solid #A7F3D0;
-      border-radius: var(--radius-sm);
-      padding: 12px 14px;
+      padding: 28px 16px;
+      color: var(--ink-muted);
       font-size: 0.88rem;
-      color: #065F46;
-      margin-bottom: 14px;
     }
   </style>
 </head>
@@ -956,17 +1128,18 @@
   <header class="app-header">
     <div class="header-inner">
       <div class="brand">
-        <div class="brand-icon" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+            <path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>
           </svg>
         </div>
         <div>
           <div class="brand-title">짠내투어</div>
-          <div class="brand-sub">텅장 탈출! 최저가 맞춤 여행 플래너</div>
+          <div class="brand-sub">초저가 맞춤 여행 플래너</div>
         </div>
       </div>
-      <div class="header-actions">
+      <div>
         <button type="button" id="fontToggleBtn" class="font-toggle-btn" aria-label="글씨 크기 전환">
           <span>가+</span>
           <span id="fontToggleText">큰 글씨</span>
@@ -979,16 +1152,16 @@
   <nav class="desktop-nav" aria-label="주요 메뉴">
     <div class="desktop-nav-inner">
       <button type="button" class="nav-tab-btn active" data-tab="recommend">
-        1. 여행지 추천
+        여행지 추천
       </button>
       <button type="button" class="nav-tab-btn" data-tab="stay">
-        2. 비행기·숙소
+        비행기 · 숙소
       </button>
       <button type="button" class="nav-tab-btn" data-tab="spot">
-        3. 0원·저가 관광지
+        0원 · 저가 관광지
       </button>
       <button type="button" class="nav-tab-btn" data-tab="saved">
-        4. 내 플랜 저장함 <span class="badge-count" id="desktopSavedBadge">0</span>
+        내 플랜 저장함 <span class="badge-count num" id="desktopSavedBadge">0</span>
       </button>
     </div>
   </nav>
@@ -999,25 +1172,25 @@
     <!-- [MVP 1] 여행지 추천 탭 -->
     <section id="tab-recommend" class="tab-section active">
       <div class="section-header">
-        <span class="section-tag">MVP 1 · 초저가 맞춤 매칭</span>
-        <h1 class="section-title">지금 가진 돈으로 어디까지 갈 수 있을까?</h1>
-        <p class="section-desc">총 예산과 일정만 고르면 교통·숙박·식비까지 합산한 최저가 여행지를 추천해 드립니다.</p>
+        <span class="section-eyebrow">Step 01 · Budget Matching</span>
+        <h1 class="section-title">지금 예산으로 떠날 수 있는 최저가 여행지</h1>
+        <p class="section-desc">총 예산과 일정을 선택하면 교통·숙박·식비를 모두 합산한 현실 경비를 계산합니다.</p>
       </div>
 
       <div class="card">
         <div class="control-grid">
           <div class="form-group control-full">
             <label for="budgetRange">
-              <span>내 총 여행 예산 (전부 포함)</span>
-              <span class="budget-display" id="budgetLabel">300,000원</span>
+              <span>총 여행 예산 (교통·숙박·식비 포함)</span>
+              <span class="budget-display num" id="budgetLabel">300,000원</span>
             </label>
             <input type="range" id="budgetRange" min="80000" max="1000000" step="10000" value="300000" />
             <div class="chip-row" id="budgetPresetRow">
-              <button type="button" class="chip-btn" data-budget="120000">12만 원</button>
-              <button type="button" class="chip-btn" data-budget="200000">20만 원</button>
-              <button type="button" class="chip-btn active" data-budget="300000">30만 원</button>
-              <button type="button" class="chip-btn" data-budget="450000">45만 원</button>
-              <button type="button" class="chip-btn" data-budget="650000">65만 원</button>
+              <button type="button" class="chip-btn num" data-budget="120000">12만 원</button>
+              <button type="button" class="chip-btn num" data-budget="200000">20만 원</button>
+              <button type="button" class="chip-btn num active" data-budget="300000">30만 원</button>
+              <button type="button" class="chip-btn num" data-budget="450000">45만 원</button>
+              <button type="button" class="chip-btn num" data-budget="650000">65만 원</button>
             </div>
           </div>
 
@@ -1034,10 +1207,10 @@
           <div class="form-group">
             <label for="departureSelect"><span>출발 지역</span></label>
             <select id="departureSelect" class="styled-select">
-              <option value="seoul">수도권 출발 (서울·인천·경기)</option>
-              <option value="busan">부산·경남 출발 (김해공항·부산역)</option>
-              <option value="daegu">대구·경북 출발</option>
-              <option value="jeju">제주·기타 지역 출발</option>
+              <option value="seoul">수도권 출발 (서울 · 인천 · 경기)</option>
+              <option value="busan">부산 · 경남 출발 (김해공항 · 부산역)</option>
+              <option value="daegu">대구 · 경북 출발</option>
+              <option value="jeju">제주 · 기타 지역 출발</option>
             </select>
           </div>
 
@@ -1045,60 +1218,63 @@
             <label><span>여행 스타일</span></label>
             <div class="chip-row" id="themeChipRow">
               <button type="button" class="chip-btn active" data-theme="all">전체 보기</button>
-              <button type="button" class="chip-btn" data-theme="domestic">국내 갓성비</button>
+              <button type="button" class="chip-btn" data-theme="domestic">국내 가성비</button>
               <button type="button" class="chip-btn" data-theme="overseas">초저가 해외</button>
-              <button type="button" class="chip-btn" data-theme="food">야시장·먹방</button>
-              <button type="button" class="chip-btn" data-theme="walk">뚜벅이·힐링</button>
+              <button type="button" class="chip-btn" data-theme="food">야시장 · 먹방</button>
+              <button type="button" class="chip-btn" data-theme="walk">뚜벅이 · 산책</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div id="destResultInfo" style="font-weight:700; margin-bottom:12px; color:var(--text-sub); font-size:0.95rem;"></div>
+      <div class="result-meta-bar">
+        <span id="destResultInfo"></span>
+        <span style="font-size:0.78rem; color:var(--ink-muted);">예산 적합순 정렬</span>
+      </div>
       <div class="dest-grid" id="destListContainer"></div>
     </section>
 
     <!-- [MVP 2] 비행기 · 교통 & 숙소 추천 탭 -->
     <section id="tab-stay" class="tab-section">
       <div class="section-header">
-        <span class="section-tag">MVP 2 · 최저가 이동 & 숙박</span>
-        <h2 class="section-title">비행기·교통 & 숙소 최저가 조합</h2>
-        <p class="section-desc">수하물 제외 특가, 심야 출발, 역세권 게스트하우스 등 가장 저렴한 옵션을 선택해 보세요.</p>
+        <span class="section-eyebrow">Step 02 · Transport &amp; Stay</span>
+        <h2 class="section-title">비행기 · 교통 및 숙소 최저가 조합</h2>
+        <p class="section-desc">수하물 제외 특가, 심야 이동, 역세권 게스트하우스 등 가장 합리적인 옵션을 고르세요.</p>
       </div>
 
       <div class="card">
         <div class="form-group">
-          <label for="stayDestSelect"><span>현재 보고 있는 여행지 변경</span></label>
+          <label for="stayDestSelect"><span>선택한 여행지</span></label>
           <select id="stayDestSelect" class="styled-select"></select>
         </div>
       </div>
 
       <div class="card">
-        <h3 style="font-size:1.12rem; font-weight:800; margin-bottom:6px;">✈️ 최저가 항공권 · 교통편 추천</h3>
-        <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;" id="transportSubLabel"></p>
+        <h3 class="card-heading">최저가 항공권 · 교통편 추천</h3>
+        <p class="card-sub" id="transportSubLabel"></p>
         <div class="tip-banner">
-          💡 <strong>교통비 절약 핵심:</strong> 화·수요일 출발, 위탁수하물 없이 <strong>기내용 배낭(10kg 이하)</strong>만 챙기면 왕복 평균 4~7만 원을 즉시 아낄 수 있습니다.
+          <span class="tip-label">절약 팁</span> 화·수요일 출발 및 위탁수하물 없이 <strong>기내용 배낭(10kg 이하)</strong>만 이용하면 왕복 평균 4~7만 원을 절약할 수 있습니다.
         </div>
         <div class="option-list" id="transportOptionList"></div>
       </div>
 
       <div class="card">
-        <h3 style="font-size:1.12rem; font-weight:800; margin-bottom:6px;">🛏️ 가성비 숙소 추천 (<span id="stayDaysText">2박 3일</span> 기준)</h3>
-        <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">대중교통 도보 5분 이내, 후기가 검증된 초절약 숙소 유형입니다.</p>
+        <h3 class="card-heading">가성비 숙소 추천 (<span id="stayDaysText">2박 3일</span> 기준)</h3>
+        <p class="card-sub">대중교통 도보 5분 이내, 접근성과 후기가 검증된 저예산 숙소입니다.</p>
         <div class="option-list" id="stayOptionList"></div>
       </div>
 
       <button type="button" class="btn btn-primary btn-block" id="goToSpotBtn">
-        다음 단계: 이 여행지의 0원·저가 관광지 담기 →
+        다음 단계: 0원 · 저가 관광지 담기
       </button>
     </section>
 
     <!-- [MVP 3] 0원 & 초저가 관광지 추천 탭 -->
     <section id="tab-spot" class="tab-section">
       <div class="section-header">
-        <span class="section-tag">MVP 3 · 무료 명소 & 로컬 미식</span>
-        <h2 class="section-title"><span id="spotDestTitle">후쿠오카</span> 0원 & 초저가 관광지</h2>
-        <p class="section-desc">입장료 0원 명소와 현지인 가성비 맛집을 일정에 담으면 총 예산이 자동 계산됩니다.</p>
+        <span class="section-eyebrow">Step 03 · Free &amp; Local Spots</span>
+        <h2 class="section-title"><span id="spotDestTitle">후쿠오카</span> 0원 및 저가 관광지</h2>
+        <p class="section-desc">입장료 없는 무료 명소와 로컬 가성비 먹거리를 담으면 예상 경비에 즉시 반영됩니다.</p>
       </div>
 
       <div class="card">
@@ -1108,12 +1284,12 @@
             <select id="spotDestSelect" class="styled-select"></select>
           </div>
           <div class="form-group">
-            <label><span>비용·테마 필터</span></label>
+            <label><span>비용 · 테마 필터</span></label>
             <div class="chip-row" id="spotFilterRow">
               <button type="button" class="chip-btn active" data-spotfilter="all">전체</button>
               <button type="button" class="chip-btn" data-spotfilter="free">0원 무료만</button>
               <button type="button" class="chip-btn" data-spotfilter="food">가성비 먹거리</button>
-              <button type="button" class="chip-btn" data-spotfilter="night">야경·산책</button>
+              <button type="button" class="chip-btn" data-spotfilter="night">야경 · 산책</button>
             </div>
           </div>
         </div>
@@ -1125,43 +1301,43 @@
     <!-- [저장함] 내 플랜 & localStorage 견적서 탭 -->
     <section id="tab-saved" class="tab-section">
       <div class="section-header">
-        <span class="section-tag">브라우저 자동 저장 · localStorage</span>
-        <h2 class="section-title">내 초저가 여행 견적서 & 저장함</h2>
-        <p class="section-desc">선택한 여행지, 항공·숙소, 담은 관광지와 준비물 체크리스트가 기기에 자동 저장됩니다.</p>
+        <span class="section-eyebrow">Saved Plan · Local Storage</span>
+        <h2 class="section-title">내 여행 견적서 및 저장함</h2>
+        <p class="section-desc">선택한 여행지, 항공·숙소, 담은 일정과 체크리스트는 브라우저에 자동 보관됩니다.</p>
       </div>
 
       <div class="summary-banner" id="savedSummaryBanner"></div>
 
       <div class="card">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-          <h3 style="font-size:1.1rem; font-weight:800;">🗺️ 일정에 담은 관광지·먹거리</h3>
-          <button type="button" class="btn btn-ghost" style="min-height:38px; padding:6px 12px; font-size:0.82rem;" id="clearSpotsBtn">전체 비우기</button>
+          <h3 class="card-heading" style="margin-bottom:0;">일정에 담은 관광지 · 먹거리</h3>
+          <button type="button" class="btn btn-ghost" style="min-height:36px; padding:5px 11px; font-size:0.8rem;" id="clearSpotsBtn">전체 비우기</button>
         </div>
         <div id="savedSpotsList"></div>
       </div>
 
       <div class="card">
-        <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:10px;">⭐ 찜해둔 추천 여행지</h3>
+        <h3 class="card-heading" style="margin-bottom:10px;">찜한 추천 여행지</h3>
         <div id="bookmarkedList"></div>
       </div>
 
       <div class="card">
-        <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:6px;">🎒 돈 아끼는 짠내 여행 준비물 체크리스트</h3>
-        <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:12px;">수하물 추가 요금과 현지 바가지를 막아주는 필수 아이템입니다.</p>
+        <h3 class="card-heading">저예산 여행 준비물 체크리스트</h3>
+        <p class="card-sub">수하물 추가 요금과 현지 불필요한 지출을 막아주는 필수 품목입니다.</p>
         <div style="display:flex; gap:8px; margin-bottom:12px;">
-          <input type="text" id="newCheckInput" class="styled-input" placeholder="직접 준비물 추가 (예: 접이식 텀블러)" />
+          <input type="text" id="newCheckInput" class="styled-input" placeholder="준비물 직접 추가 (예: 접이식 텀블러)" />
           <button type="button" class="btn btn-primary" id="addCheckBtn" style="flex-shrink:0;">추가</button>
         </div>
         <div id="checklistContainer"></div>
       </div>
 
-      <div class="card" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center;">
-        <div style="font-size:0.85rem; color:var(--text-muted);">
-          모든 데이터는 현재 브라우저(localStorage)에 안전하게 보관됩니다.
+      <div class="card" style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-size:0.83rem; color:var(--ink-muted);">
+          모든 데이터는 현재 브라우저(localStorage)에 자동 저장됩니다.
         </div>
         <div style="display:flex; gap:8px; width:100%;">
-          <button type="button" class="btn btn-outline" id="copyPlanBtn" style="flex:1;">📋 견적 텍스트 복사</button>
-          <button type="button" class="btn btn-danger-outline" id="resetAllBtn" style="flex:1;">초기화</button>
+          <button type="button" class="btn btn-outline" id="copyPlanBtn" style="flex:1;">견적 텍스트 복사</button>
+          <button type="button" class="btn btn-danger-outline" id="resetAllBtn" style="flex:1;">전체 초기화</button>
         </div>
       </div>
     </section>
@@ -1173,31 +1349,31 @@
     <div class="mini-budget-bar">
       <div class="mini-budget-info">
         <span id="miniDestName">후쿠오카 (2박 3일)</span> · 예상 견적
-        <span class="mini-budget-price" id="miniTotalPrice">275,000원</span>
-        <span id="miniBudgetStatus" style="font-size:0.78rem; margin-left:4px;"></span>
+        <span class="mini-budget-price num" id="miniTotalPrice">275,000원</span>
+        <span class="num" id="miniBudgetStatus" style="font-size:0.78rem; margin-left:4px;"></span>
       </div>
-      <button type="button" class="btn btn-accent" style="min-height:38px; padding:6px 12px; font-size:0.84rem; flex-shrink:0;" id="quickSavedBtn">
+      <button type="button" class="btn btn-primary" style="min-height:36px; padding:5px 13px; font-size:0.82rem; flex-shrink:0;" id="quickSavedBtn">
         내 견적서
       </button>
     </div>
 
     <nav class="mobile-bottom-nav" aria-label="모바일 하단 메뉴">
       <button type="button" class="mobile-nav-btn active" data-tab="recommend">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         <span>여행지</span>
       </button>
       <button type="button" class="mobile-nav-btn" data-tab="stay">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 20h20"/><path d="M5 20V8l7-4 7 4v12"/><path d="M9 20v-6h6v6"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
         <span>항공·숙소</span>
       </button>
       <button type="button" class="mobile-nav-btn" data-tab="spot">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         <span>0원관광</span>
       </button>
       <button type="button" class="mobile-nav-btn" data-tab="saved">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
         <span>내 플랜</span>
-        <span class="mobile-badge" id="mobileSavedBadge">0</span>
+        <span class="mobile-badge num" id="mobileSavedBadge">0</span>
       </button>
     </nav>
   </div>
@@ -1211,98 +1387,93 @@
 
       const STORAGE_KEY = 'zzannae_tour_planner_v1';
 
-      // 여행지 마스터 데이터 (국내 + 초저가 해외)
       const DESTINATIONS = [
         {
           id: 'fukuoka',
           name: '후쿠오카',
           region: '일본 규슈 · 초저가 해외',
-          emoji: '🍜',
           themes: ['overseas', 'food', 'walk'],
           dailyFood: 28000,
-          desc: '공항에서 시내까지 지하철 5분! 교통비가 거의 들지 않고 무료 공원과 저렴한 현지 라멘·마트 먹거리가 풍부한 짠내 해외여행 1순위입니다.',
-          savingTip: '공항버스 대신 시영지하철(약 2,500원)을 이용하고, 저녁 8시 이후 백화점·마트 반값 도시락을 노리세요.',
+          desc: '공항에서 시내까지 지하철 5분 거리로 교통비가 거의 들지 않으며, 무료 도심 공원과 저렴한 로컬 라멘·마트 먹거리가 풍부합니다.',
+          savingTip: '공항버스 대신 시영지하철(약 2,500원)을 이용하고, 저녁 8시 이후 백화점·마트 할인 도시락을 활용하세요.',
           transports: [
             { badge: '초특가 배낭 단독', title: '화·수 출발 심야/오전 LCC 특가 (수하물 0kg)', meta: '왕복 기준 · 기내 배낭 10kg만 허용 · 성수기 제외', basePrice: 129000 },
             { badge: '가성비 왕복', title: '평일 얼리버드 저비용항공 왕복', meta: '왕복 기준 · 위탁수하물 미포함 · 사전 온라인 체크인', basePrice: 158000 },
-            { badge: '부산항 출발 특화', title: '고속선 배편 왕복 특가 (수하물 넉넉)', meta: '왕복 기준 · 유류할증료 포함 · 시내 항구 바로 도착', basePrice: 115000 }
+            { badge: '부산항 출발 특화', title: '고속선 배편 왕복 특가 (수하물 여유)', meta: '왕복 기준 · 유류할증료 포함 · 시내 항구 바로 도착', basePrice: 115000 }
           ],
           stays: [
-            { badge: '초절약 1위', title: '하카타역 도보 4분 캡슐·호스텔', meta: '개인 커튼형 침대 · 무료 와이파이 · 공용 라운지', perNight: 27000 },
-            { badge: '가성비 싱글', title: '텐진 남쪽 미니 비즈니스 호텔', meta: '1인 1실 개인 욕실 · 편의점 1분 거리', perNight: 46000 },
+            { badge: '초절약 1위', title: '하카타역 도보 4분 캡슐 · 호스텔', meta: '개인 커튼형 침대 · 무료 와이파이 · 공용 라운지', perNight: 27000 },
+            { badge: '가성비 싱글', title: '텐진 남쪽 미니 비즈니스 호텔', meta: '1인 1실 개인 욕실 · 편의점 도보 1분', perNight: 46000 },
             { badge: '조식 포함', title: '나카스 리버사이드 게스트하우스 (토스트 조식)', meta: '아침 식비 절약 · 야타이 거리 도보 이동', perNight: 33000 }
           ],
           spots: [
-            { id: 'fk1', name: '오호리 공원 & 일본정원 외곽 산책', category: 'night', price: 0, desc: '거대한 호수를 따라 현지인처럼 산책하며 피크닉하기 좋은 도심 힐링 명소입니다.', tip: '편의점 삼각김밥과 커피를 사서 호숫가 벤치에서 먹으면 3천 원대 브런치 완성!' },
-            { id: 'fk2', name: '후쿠오카 시청 15층 무료 전망 로비', category: 'night', price: 0, desc: '비싼 전망대 대신 텐진 시내와 나카스 야경을 무료로 내려다볼 수 있는 숨은 명소입니다.', tip: '평일·주말 저녁 8시 전후 방문 추천, 입장료 완전 무료.' },
-            { id: 'fk3', name: '하카타역 로피아(LOPIA) 마트 먹방', category: 'food', price: 6500, desc: '현지인 줄 서는 초저가 대형 마트로 초밥과 고기 도시락 가성비가 압도적입니다.', tip: '현금 결제 전용이므로 엔화 현금을 미리 준비하세요.' },
-            { id: 'fk4', name: '290엔 하카타 돈코츠 라멘 맛집', category: 'food', price: 2900, desc: '한 그릇 3천 원도 안 되는 가격에 진한 돈코츠 라멘을 맛볼 수 있는 로컬 노포입니다.', tip: '면 추가(카에다마)도 약 1,000원 수준으로 배부르게 해결 가능.' },
-            { id: 'fk5', name: '캐널시티 하카타 무료 분수쇼', category: 'free', price: 0, desc: '매시 정각과 30분마다 음악에 맞춰 펼쳐지는 화려한 무료 아쿠아 파노라마 쇼입니다.', tip: '지하 1층 중앙 무대 정면에서 무료 관람 가능합니다.' }
+            { id: 'fk1', name: '오호리 공원 & 일본정원 외곽 산책', category: 'night', price: 0, desc: '거대한 호수를 따라 현지인처럼 산책하며 피크닉하기 좋은 도심 힐링 명소입니다.', tip: '편의점 삼각김밥과 커피를 사서 호숫가 벤치에서 즐기면 3천 원대 브런치가 완성됩니다.' },
+            { id: 'fk2', name: '후쿠오카 시청 15층 무료 전망 로비', category: 'night', price: 0, desc: '유료 전망대 대신 텐진 시내와 나카스 야경을 무료로 내려다볼 수 있는 전망 공간입니다.', tip: '저녁 8시 전후 방문을 추천하며 입장료는 무료입니다.' },
+            { id: 'fk3', name: '하카타역 로피아(LOPIA) 마트 먹방', category: 'food', price: 6500, desc: '현지인이 줄 서는 초저가 대형 마트로 초밥과 고기 도시락의 가성비가 뛰어납니다.', tip: '현금 결제 전용 매장이므로 엔화 현금을 미리 준비하세요.' },
+            { id: 'fk4', name: '290엔 하카타 돈코츠 라멘 노포', category: 'food', price: 2900, desc: '한 그릇 3천 원 이하의 가격에 진한 돈코츠 라멘을 맛볼 수 있는 로컬 식당입니다.', tip: '면 추가(카에다마)도 약 1,000원 수준으로 든든하게 식사할 수 있습니다.' },
+            { id: 'fk5', name: '캐널시티 하카타 무료 분수쇼', category: 'free', price: 0, desc: '매시 정각과 30분마다 음악에 맞춰 펼쳐지는 아쿠아 파노라마 쇼입니다.', tip: '지하 1층 중앙 무대 정면에서 무료 관람이 가능합니다.' }
           ]
         },
         {
           id: 'busan',
           name: '부산 & 기장',
-          region: '국내 경상권 · 뚜벅이 성지',
-          emoji: '🌊',
+          region: '국내 경상권 · 뚜벅이 코스',
           themes: ['domestic', 'food', 'walk'],
           dailyFood: 24000,
-          desc: '지하철과 시내버스만으로 바다, 야경, 시장 먹거리를 모두 누릴 수 있는 국내 최고 가성비 여행지입니다.',
-          savingTip: '해운대 해변열차 대신 바로 옆 나무 데크 산책로(그린레일웨이)를 걸으면 0원에 똑같은 절경을 봅니다.',
+          desc: '지하철과 시내버스만으로 바다, 야경, 전통시장 먹거리를 모두 누릴 수 있는 국내 대표 저예산 여행지입니다.',
+          savingTip: '해운대 해변열차 대신 바로 옆 나무 데크 산책로(그린레일웨이)를 걸으면 0원에 동일한 바다 풍경을 감상할 수 있습니다.',
           transports: [
             { badge: '초저가 뚜벅이', title: '심야 우등고속버스 / 무궁화호 왕복', meta: '왕복 기준 · 심야 이동 시 숙박비 1박 절약 효과', basePrice: 48000 },
-            { badge: '시간 절약', title: 'KTX·SRT 조조/심야 할인 열차 왕복', meta: '왕복 기준 · 코레일 청소년/힘내라청춘·조조 특가', basePrice: 89000 },
-            { badge: '부산·경남권', title: '시내버스·광역전철 교통카드 이동', meta: '왕복 기준 · 환승 할인 적용 초저가 이동', basePrice: 8000 }
+            { badge: '시간 절약', title: 'KTX · SRT 조조/심야 할인 열차 왕복', meta: '왕복 기준 · 코레일 청소년/힘내라청춘 · 조조 특가', basePrice: 89000 },
+            { badge: '부산 · 경남권', title: '시내버스 · 광역전철 교통카드 이동', meta: '왕복 기준 · 환승 할인 적용 초저가 이동', basePrice: 8000 }
           ],
           stays: [
-            { badge: '초절약 게하', title: '광안리 해변 도보 2분 오션뷰 게스트하우스', meta: '도미토리 · 루프탑 야경 무료 · 조식 시리얼 제공', perNight: 24000 },
-            { badge: '가성비 1인실', title: '서면역 역세권 캡슐·모텔형 비즈니스룸', meta: '지하철 1·2호선 환승역 · 전포카페거리 도보권', perNight: 39000 },
-            { badge: '찜질방/사우나', title: '해운대 오션뷰 대형 찜질 스파 1박', meta: '해수 온천 + 수면실 이용으로 극한의 예산 절약', perNight: 18000 }
+            { badge: '초절약 게하', title: '광안리 해변 도보 2분 게스트하우스', meta: '도미토리 · 루프탑 야경 무료 · 조식 시리얼 제공', perNight: 24000 },
+            { badge: '가성비 1인실', title: '서면역 역세권 캡슐 · 비즈니스룸', meta: '지하철 1·2호선 환승역 · 전포카페거리 도보권', perNight: 39000 },
+            { badge: '찜질 스파', title: '해운대 오션뷰 대형 찜질 스파 1박', meta: '해수 온천 + 수면실 이용으로 숙박비 최소화', perNight: 18000 }
           ],
           spots: [
-            { id: 'bs1', name: '해운대 그린레일웨이 도보 해안길', category: 'free', price: 0, desc: '미포에서 청사포·송정까지 이어지는 철길 옆 무료 해안 산책로입니다.', tip: '해변열차(7,000원~)와 100% 같은 바다 풍경을 무료로 걸으며 즐길 수 있습니다.' },
-            { id: 'bs2', name: '광안리 M 드론라이트쇼 & 야경', category: 'night', price: 0, desc: '매주 토요일 밤 광안대교를 배경으로 펼쳐지는 무료 초대형 드론쇼입니다.', tip: '해변 백사장 어디서나 0원에 관람 가능하며 30분 전 자리 잡기를 추천합니다.' },
-            { id: 'bs3', name: '부평깡통시장 야시장 먹거리 투어', category: 'food', price: 7000, desc: '유부전골, 비빔당면, 씨앗호떡 등 소액으로 다양한 부산 길거리 음식을 즐길 수 있습니다.', tip: '7시 30분 야시장 개장 직후 방문하면 대기 없이 저렴하게 맛볼 수 있습니다.' },
-            { id: 'bs4', name: '흰여울문화마을 & 절영해안산책로', category: 'walk', price: 0, desc: '영도 바다 절벽 위 골목길과 해안 터널을 따라 걷는 무료 인생샷 코스입니다.', tip: '남포역에서 시내버스 1번으로 환승 이동하면 교통비만 듭니다.' }
+            { id: 'bs1', name: '해운대 그린레일웨이 도보 해안길', category: 'free', price: 0, desc: '미포에서 청사포·송정까지 이어지는 철길 옆 무료 해안 산책로입니다.', tip: '유료 해변열차와 같은 해안 절경을 무료로 걸으며 즐길 수 있습니다.' },
+            { id: 'bs2', name: '광안리 M 드론라이트쇼 & 야경', category: 'night', price: 0, desc: '매주 토요일 밤 광안대교를 배경으로 펼쳐지는 무료 드론 라이트쇼입니다.', tip: '해변 백사장 어디서나 무료 관람 가능하며 30분 전 도착을 권장합니다.' },
+            { id: 'bs3', name: '부평깡통시장 야시장 먹거리 투어', category: 'food', price: 7000, desc: '유부전골, 비빔당면, 씨앗호떡 등 소액으로 다양한 부산 길거리 음식을 맛봅니다.', tip: '오후 7시 30분 야시장 개장 직후 방문하면 대기 없이 이용할 수 있습니다.' },
+            { id: 'bs4', name: '흰여울문화마을 & 절영해안산책로', category: 'walk', price: 0, desc: '영도 바다 절벽 위 골목길과 해안 터널을 따라 걷는 무료 산책 코스입니다.', tip: '남포역에서 시내버스 1회 환승으로 이동해 교통비만 소요됩니다.' }
           ]
         },
         {
           id: 'taipei',
           name: '타이베이',
           region: '대만 · 야시장 식도락 해외',
-          emoji: '🏮',
           themes: ['overseas', 'food'],
           dailyFood: 25000,
-          desc: '단돈 3~4천 원대 야시장 미식과 무료 온천 족욕, 저렴한 MRT 대중교통으로 지갑 걱정 없이 즐기는 해외 여행지입니다.',
-          savingTip: '편의점 이지카드(교통카드)를 충전해 MRT와 유바이크(공공자전거, 30분 약 400원)를 활용하세요.',
+          desc: '3~4천 원대 야시장 미식과 무료 온천 족욕, 저렴한 MRT 대중교통으로 부담 없이 즐기는 해외 여행지입니다.',
+          savingTip: '편의점 이지카드(교통카드)를 충전해 MRT와 유바이크(공공자전거, 30분 약 400원)를 적극 활용하세요.',
           transports: [
             { badge: '새벽 특가', title: '심야 출발 LCC 왕복 특가 (기내 배낭만)', meta: '왕복 기준 · 새벽 도착 후 첫차 공항철도 이용', basePrice: 179000 },
             { badge: '평일 특가', title: '화·수·목 출발 저비용항공 왕복', meta: '왕복 기준 · 수하물 제외 기본 운임', basePrice: 215000 },
             { badge: '수하물 포함', title: '특가 프로모션 위탁수하물 15kg 포함', meta: '왕복 기준 · 기념품 쇼핑 예정 시 추천', basePrice: 255000 }
           ],
           stays: [
-            { badge: '초절약 역세권', title: '타이베이 메인역 도보 3분 캡슐 호스텔', meta: '공항철도·MRT 환승 최고 입지 · 개인 사물함', perNight: 24000 },
-            { badge: '시먼딩 중심', title: '시먼역 도보 5분 가성비 디자인 호스텔', meta: '야시장·맛집 도보권 · 공용 주방 무료 사용', perNight: 29000 },
+            { badge: '초절약 역세권', title: '타이베이 메인역 도보 3분 캡슐 호스텔', meta: '공항철도 · MRT 환승 최고 입지 · 개인 사물함', perNight: 24000 },
+            { badge: '시먼딩 중심', title: '시먼역 도보 5분 가성비 디자인 호스텔', meta: '야시장 · 맛집 도보권 · 공용 주방 무료 사용', perNight: 29000 },
             { badge: '가성비 트윈', title: '중산구 로컬 비즈니스 미니호텔', meta: '1~2인 전용 욕실 · 조용한 주택가 위치', perNight: 48000 }
           ],
           spots: [
-            { id: 'tp1', name: '닝샤 야시장 로컬 길거리 만찬', category: 'food', price: 6000, desc: '현지인들이 가장 사랑하는 미식 야시장으로 굴전, 지파이, 루로우판을 2~3천 원대에 즐깁니다.', tip: '메인 거리 안쪽 노포가 가격도 저렴하고 양도 푸짐합니다.' },
-            { id: 'tp2', name: '베이터우 푸싱공원 무료 유황 족욕탕', category: 'free', price: 0, desc: 'MRT로 이동해 천연 온천수에 무료로 발을 담그고 여행 피로를 풀 수 있습니다.', tip: '발을 닦을 작은 수건 한 장만 숙소에서 챙겨가세요!' },
-            { id: 'tp3', name: '샹산(코끼리산) 무료 타이베이 101 야경', category: 'night', price: 0, desc: '101 전망대 입장료(약 2.5만 원) 대신 20분 계단을 올라 무료로 더 멋진 야경을 감상합니다.', tip: '해 질 녘 30분 전에 올라가면 노을과 야경을 동시에 봅니다.' },
-            { id: 'tp4', name: '중정기념당 무료 근위병 교대식', category: 'free', price: 0, desc: '웅장한 광장과 매시 정각 진행되는 절도 있는 근위병 교대식을 무료로 관람합니다.', tip: '정각 10분 전 본당 내부로 올라가면 관람하기 좋습니다.' }
+            { id: 'tp1', name: '닝샤 야시장 로컬 길거리 만찬', category: 'food', price: 6000, desc: '현지인들이 즐겨 찾는 미식 야시장으로 굴전, 지파이, 루로우판을 2~3천 원대에 즐깁니다.', tip: '메인 거리 안쪽 노포가 가격도 저렴하고 양도 넉넉합니다.' },
+            { id: 'tp2', name: '베이터우 푸싱공원 무료 유황 족욕탕', category: 'free', price: 0, desc: 'MRT로 이동해 천연 온천수에 무료로 발을 담그고 피로를 풀 수 있습니다.', tip: '발을 닦을 작은 개인 수건만 숙소에서 챙겨가세요.' },
+            { id: 'tp3', name: '샹산(코끼리산) 무료 타이베이 101 야경', category: 'night', price: 0, desc: '유료 전망대 대신 약 20분 계단을 올라 무료로 도심 전체 야경을 감상합니다.', tip: '해 질 녘 30분 전에 올라가면 노을과 야경을 함께 볼 수 있습니다.' },
+            { id: 'tp4', name: '중정기념당 무료 근위병 교대식', category: 'free', price: 0, desc: '웅장한 광장과 매시 정각 진행되는 근위병 교대식을 무료로 관람합니다.', tip: '정각 10분 전 본당 내부로 올라가면 관람하기 좋습니다.' }
           ]
         },
         {
           id: 'jeonju',
           name: '전주',
-          region: '국내 전라권 · 식도락·한옥',
-          emoji: '🍚',
+          region: '국내 전라권 · 식도락 · 한옥',
           themes: ['domestic', 'food', 'walk'],
           dailyFood: 23000,
-          desc: '한옥마을 전체가 무료 산책 코스이며, 7~8천 원대 콩나물국밥과 남부시장 야시장으로 식비를 극한으로 아낄 수 있습니다.',
-          savingTip: '한옥마을 내 유료 체험 대신 오목대 전망대와 자만벽화마을 무료 산책 코스를 연결해 걸으세요.',
+          desc: '한옥마을 전체가 무료 산책 코스이며, 7~8천 원대 콩나물국밥과 남부시장 야시장으로 식비를 크게 절약할 수 있습니다.',
+          savingTip: '한옥마을 내 유료 체험 대신 오목대 전망대와 자만벽화마을 무료 산책 코스를 연결해 도보로 둘러보세요.',
           transports: [
-            { badge: '초저가 버스', title: '고속버스·시외버스 왕복 일반석', meta: '왕복 기준 · 전주시외버스터미널 하차 후 시내버스 연계', basePrice: 36000 },
+            { badge: '초저가 버스', title: '고속버스 · 시외버스 왕복 일반석', meta: '왕복 기준 · 전주시외버스터미널 하차 후 시내버스 연계', basePrice: 36000 },
             { badge: '기차 특가', title: 'ITX-새마을 / 무궁화호 왕복', meta: '왕복 기준 · 전주역 첫마중길 도보 산책 가능', basePrice: 44000 },
             { badge: 'KTX 쾌속', title: 'KTX 왕복 할인 승차권', meta: '왕복 기준 · 서울 출발 약 1시간 40분 소요', basePrice: 68000 }
           ],
@@ -1312,21 +1483,20 @@
             { badge: '터미널 인근', title: '전주 터미널 도보 3분 비즈니스 호텔', meta: '짐 보관 편리 · 시내 주요 버스 노선 출발지', perNight: 42000 }
           ],
           spots: [
-            { id: 'jj1', name: '전주한옥마을 & 오목대 무료 야경 전망', category: 'night', price: 0, desc: '700여 채의 한옥 지붕 물결을 오목대 정상에서 무료로 한눈에 내려다볼 수 있습니다.', tip: '해 진 직후 조명이 켜질 때 올라가면 무료로 최고의 야경을 봅니다.' },
-            { id: 'jj2', name: '남부시장 현대옥 본점·시장 콩나물국밥', category: 'food', price: 7500, desc: '수란과 오징어 토핑까지 든든하게 챙겨 먹을 수 있는 전주 대표 가성비 한 끼입니다.', tip: '아침 식사로 먹으면 점심까지 든든해 식비가 크게 절약됩니다.' },
-            { id: 'jj3', name: '자만벽화마을 & 전주향교 무료 산책', category: 'walk', price: 0, desc: '아기자기한 벽화 골목과 고즈넉한 은행나무 향교를 입장료 없이 둘러볼 수 있습니다.', tip: '한옥마을에서 도보 5분 거리라 교통비가 전혀 들지 않습니다.' },
-            { id: 'jj4', name: '남부시장 청년몰 & 주말 야시장', category: 'food', price: 6000, desc: '금·토요일 밤 열리는 야시장에서 3~5천 원대 퓨전 길거리 음식을 즐깁니다.', tip: '여러 음식을 소량씩 사서 나누어 먹으면 가성비가 최고입니다.' }
+            { id: 'jj1', name: '전주한옥마을 & 오목대 무료 야경 전망', category: 'night', price: 0, desc: '700여 채의 한옥 지붕 물결을 오목대 정상에서 무료로 내려다볼 수 있습니다.', tip: '해 진 직후 조명이 켜질 때 올라가면 무료로 야경을 감상할 수 있습니다.' },
+            { id: 'jj2', name: '남부시장 현대옥 본점 · 시장 콩나물국밥', category: 'food', price: 7500, desc: '수란과 오징어 토핑까지 든든하게 챙겨 먹을 수 있는 전주 대표 가성비 식사입니다.', tip: '아침 식사로 먹으면 점심까지 든든해 하루 식비가 절약됩니다.' },
+            { id: 'jj3', name: '자만벽화마을 & 전주향교 무료 산책', category: 'walk', price: 0, desc: '벽화 골목과 고즈넉한 은행나무 향교를 입장료 없이 둘러볼 수 있습니다.', tip: '한옥마을에서 도보 5분 거리라 추가 교통비가 들지 않습니다.' },
+            { id: 'jj4', name: '남부시장 청년몰 & 주말 야시장', category: 'food', price: 6000, desc: '금·토요일 밤 열리는 야시장에서 3~5천 원대 퓨전 길거리 음식을 즐깁니다.', tip: '여러 음식을 소량씩 구매해 나누어 먹으면 합리적입니다.' }
           ]
         },
         {
           id: 'danang',
           name: '다낭 & 호이안',
-          region: '베트남 · 물가 깡패 해외',
-          emoji: '🥥',
+          region: '베트남 · 초저물가 해외',
           themes: ['overseas', 'food', 'walk'],
           dailyFood: 18000,
-          desc: '항공권만 특가로 잡으면 현지 쌀국수 2,500원, 1박 2만 원대 수영장 호텔까지! 체류비가 국내 여행보다 싼 기적의 여행지입니다.',
-          savingTip: '공항에서 시내 이동 시 택시 호객행위를 피하고 그랩(Grab) 앱을 쓰면 약 4,000원으로 이동합니다.',
+          desc: '항공권만 특가로 확보하면 현지 쌀국수 2,500원, 1박 2만 원대 호텔까지 체류비가 국내 여행보다 저렴한 도시입니다.',
+          savingTip: '공항에서 시내 이동 시 택시 호객행위를 피하고 그랩(Grab) 앱을 이용하면 약 4,000원으로 이동할 수 있습니다.',
           transports: [
             { badge: '땡처리 초특가', title: '화·수 출발 밤도깨비 LCC 왕복 (배낭 단독)', meta: '왕복 기준 · 수하물 제외 · 비수기 평일 특가 기준', basePrice: 199000 },
             { badge: '가성비 왕복', title: '얼리버드 저비용항공 왕복 특가', meta: '왕복 기준 · 기내 10kg 포함 · 새벽 귀국편', basePrice: 239000 },
@@ -1335,158 +1505,151 @@
           stays: [
             { badge: '1박 1만 원대', title: '미케비치 도보 3분 가성비 부티크 호스텔', meta: '조식 포함 · 루프탑 테라스 · 에어컨 완비', perNight: 16000 },
             { badge: '가성비 호텔', title: '한시장 인근 3성급 미니 호텔 (조식 포함)', meta: '2인 기준 1박 2.8만 원대 · 수영장 무료 이용', perNight: 28000 },
-            { badge: '호이안 감성', title: '호이안 올드타운 자전거 무료 대여 홈스테이', meta: '무료 자전거로 올드타운·해변 이동 교통비 0원', perNight: 24000 }
+            { badge: '호이안 감성', title: '호이안 올드타운 자전거 무료 대여 홈스테이', meta: '무료 자전거로 올드타운 · 해변 이동 교통비 0원', perNight: 24000 }
           ],
           spots: [
-            { id: 'dn1', name: '미케비치 무료 일출 & 해변 산책', category: 'free', price: 0, desc: '세계 6대 해변으로 꼽히는 끝없는 백사장에서 무료로 산책과 해수욕을 즐깁니다.', tip: '오전 6~8시 사이가 햇빛이 강하지 않고 현지인 활기를 느끼기 좋습니다.' },
-            { id: 'dn2', name: '로컬 반미 & 쌀국수 한 끼 세트', category: 'food', price: 3500, desc: '바삭한 베트남 바게트 반미(1,500원)와 진한 소고기 쌀국수(2,500원)의 완벽한 조합입니다.', tip: '관광객 식당 대신 현지인이 플라스틱 의자에 앉아 먹는 곳이 절반 가격입니다.' },
-            { id: 'dn3', name: '다낭 용다리 주말 무료 불쇼·물쇼', category: 'night', price: 0, desc: '매주 금·토·일 밤 9시 한강 용다리에서 불을 뿜는 이색 무료 퍼포먼스입니다.', tip: '밤 8시 45분쯤 강변 산책로에 자리 잡으면 무료로 정면 관람 가능합니다.' },
-            { id: 'dn4', name: '호이안 올드타운 야경 & 투본강 산책', category: 'night', price: 0, desc: '수천 개의 형형색색 등불이 켜지는 동화 같은 거리를 산책하며 사진 남기기 좋습니다.', tip: '유적지 내부 입장권을 사지 않아도 거리 산책과 야경 감상은 무료입니다.' }
+            { id: 'dn1', name: '미케비치 무료 일출 & 해변 산책', category: 'free', price: 0, desc: '긴 백사장을 따라 무료로 산책과 해수욕을 즐길 수 있는 대표 해변입니다.', tip: '오전 6~8시 사이가 햇빛이 강하지 않고 산책하기 좋습니다.' },
+            { id: 'dn2', name: '로컬 반미 & 쌀국수 한 끼 세트', category: 'food', price: 3500, desc: '베트남 바게트 반미(1,500원)와 진한 소고기 쌀국수(2,500원) 조합입니다.', tip: '관광객 전용 식당 대신 현지인이 이용하는 로컬 식당이 절반 가격입니다.' },
+            { id: 'dn3', name: '다낭 용다리 주말 무료 불쇼 · 물쇼', category: 'night', price: 0, desc: '매주 금·토·일 밤 9시 한강 용다리에서 진행되는 무료 퍼포먼스입니다.', tip: '밤 8시 45분경 강변 산책로에 자리 잡으면 무료로 관람 가능합니다.' },
+            { id: 'dn4', name: '호이안 올드타운 야경 & 투본강 산책', category: 'night', price: 0, desc: '형형색색 등불이 켜지는 구시가지 거리를 산책하며 야경을 즐깁니다.', tip: '유적지 내부 입장권을 구매하지 않아도 거리 산책은 무료입니다.' }
           ]
         },
         {
           id: 'gangneung',
           name: '강릉 & 정동진',
-          region: '국내 강원권 · 동해바다 힐링',
-          emoji: '🌅',
+          region: '국내 강원권 · 동해바다 산책',
           themes: ['domestic', 'walk', 'food'],
           dailyFood: 25000,
-          desc: '탁 트인 동해바다와 소나무 숲길, 중앙시장 먹거리까지 걸어서 즐기는 가장 낭만적인 저예산 바다 여행지입니다.',
-          savingTip: '비싼 오션뷰 카페 대신 편의점 커피나 테이크아웃 음료를 들고 안목해변 무료 방파제 벤치에 앉아보세요.',
+          desc: '탁 트인 동해바다와 소나무 숲길, 중앙시장 먹거리까지 걸어서 즐기는 저예산 바다 여행지입니다.',
+          savingTip: '고가 오션뷰 카페 대신 테이크아웃 음료를 들고 안목해변 무료 방파제 벤치를 이용해 보세요.',
           transports: [
-            { badge: '초저가 버스', title: '동서울/강남 고속·시외버스 왕복', meta: '왕복 기준 · 강릉터미널 하차 후 시내버스 이동', basePrice: 34000 },
-            { badge: '바다열차 감성', title: 'KTX 강릉선 조조/심야 할인 왕복', meta: '왕복 기준 · 청량리 출발 약 1시간 30분 컷', basePrice: 46000 },
-            { badge: '영동선 기차', title: '무궁화호 정동진 직통 왕복', meta: '왕복 기준 · 세계에서 바다와 가장 가까운 역 도착', basePrice: 38000 }
+            { badge: '초저가 버스', title: '동서울/강남 고속 · 시외버스 왕복', meta: '왕복 기준 · 강릉터미널 하차 후 시내버스 이동', basePrice: 34000 },
+            { badge: '쾌속 열차', title: 'KTX 강릉선 조조/심야 할인 왕복', meta: '왕복 기준 · 청량리 출발 약 1시간 30분 소요', basePrice: 46000 },
+            { badge: '영동선 기차', title: '무궁화호 정동진 직통 왕복', meta: '왕복 기준 · 바다와 가장 가까운 간이역 도착', basePrice: 38000 }
           ],
           stays: [
-            { badge: '초절약 게하', title: '강릉역·중앙시장 도보 5분 게스트하우스', meta: '도미토리 · 시장 먹거리 포장 후 라운지 식사 가능', perNight: 24000 },
-            { badge: '해변 민박', title: '경포·안목해변 인근 가성비 펜션형 원룸', meta: '평일 특가 기준 · 취사 가능하여 식비 절약', perNight: 42000 },
-            { badge: '정동진 일출', title: '정동진역 앞 가성비 모텔·민박', meta: '숙소 문 열면 바로 일출 명소 도보 1분', perNight: 38000 }
+            { badge: '초절약 게하', title: '강릉역 · 중앙시장 도보 5분 게스트하우스', meta: '도미토리 · 시장 먹거리 포장 후 라운지 식사 가능', perNight: 24000 },
+            { badge: '해변 민박', title: '경포 · 안목해변 인근 가성비 펜션형 원룸', meta: '평일 특가 기준 · 취사 가능하여 식비 절약', perNight: 42000 },
+            { badge: '정동진 일출', title: '정동진역 앞 가성비 모텔 · 민박', meta: '숙소에서 일출 명소까지 도보 1분', perNight: 38000 }
           ],
           spots: [
-            { id: 'gn1', name: '안목해변 & 솔바람다리 무료 바다 산책', category: 'free', price: 0, desc: '에메랄드빛 동해바다와 항구 풍경을 따라 걷는 강릉 대표 무료 코스입니다.', tip: '해 질 녘 솔바람다리 위에서 바라보는 바다와 산의 조화가 일품입니다.' },
-            { id: 'gn2', name: '강릉 중앙시장 장칼국수 & 닭강정', category: 'food', price: 7000, desc: '얼큰한 현지 장칼국수 한 그릇과 시장 컵 닭강정으로 배부른 한 끼를 해결합니다.', tip: '1인 컵 닭강정(4,000원)을 사면 혼자서도 부담 없이 맛볼 수 있습니다.' },
-            { id: 'gn3', name: '경포호수 둘레길 무료 자전거·도보 코스', category: 'walk', price: 0, desc: '잔잔한 호수와 경포대를 둘러싸는 4.3km 평지 산책로로 초보자도 걷기 좋습니다.', tip: '봄에는 벚꽃, 가을에는 갈대밭이 무료로 펼쳐집니다.' },
-            { id: 'gn4', name: '정동진 모래시계공원 & 해변 일출', category: 'free', price: 0, desc: '지름 8m 초대형 모래시계와 동해 일출을 별도 입장료 없이 감상할 수 있습니다.', tip: '강릉 시내에서 109번 시내버스를 타면 저렴하게 이동 가능합니다.' }
+            { id: 'gn1', name: '안목해변 & 솔바람다리 무료 바다 산책', category: 'free', price: 0, desc: '에메랄드빛 동해바다와 항구 풍경을 따라 걷는 강릉 대표 무료 코스입니다.', tip: '해 질 녘 솔바람다리 위에서 바라보는 바다 풍경이 뛰어납니다.' },
+            { id: 'gn2', name: '강릉 중앙시장 장칼국수 & 컵 닭강정', category: 'food', price: 7000, desc: '얼큰한 현지 장칼국수 한 그릇과 시장 컵 닭강정으로 든든한 한 끼를 해결합니다.', tip: '1인 컵 닭강정(4,000원)을 구매하면 혼자서도 부담 없이 맛볼 수 있습니다.' },
+            { id: 'gn3', name: '경포호수 둘레길 무료 도보 코스', category: 'walk', price: 0, desc: '잔잔한 호수와 경포대를 둘러싸는 4.3km 평지 산책로입니다.', tip: '계절마다 벚꽃과 갈대밭 풍경이 무료로 펼쳐집니다.' },
+            { id: 'gn4', name: '정동진 모래시계공원 & 해변 일출', category: 'free', price: 0, desc: '초대형 모래시계와 동해 일출을 별도 입장료 없이 감상할 수 있습니다.', tip: '강릉 시내에서 109번 시내버스를 타면 저렴하게 이동할 수 있습니다.' }
           ]
         },
         {
           id: 'qingdao',
           name: '칭다오',
-          region: '중국 산둥 · 비행 1시간 초특가 해외',
-          emoji: '🥟',
+          region: '중국 산둥 · 비행 1시간 초특가',
           themes: ['overseas', 'food'],
           dailyFood: 22000,
-          desc: '비행시간 1시간 20분! 국내선보다 싼 항공권에 양꼬치·칭다오 생맥주·무료 유럽풍 거리까지 즐길 수 있는 숨은 가성비 해외입니다.',
-          savingTip: '지하철 1회 요금이 약 400~800원 수준입니다. 알리페이/위챗페이 교통 QR만 등록하면 택시 탈 일이 없습니다.',
+          desc: '비행시간 1시간 20분으로 국내선보다 저렴한 항공권과 저렴한 양꼬치·생맥주·무료 해안 산책로를 갖춘 도시입니다.',
+          savingTip: '지하철 1회 요금이 약 400~800원 수준입니다. 알리페이 교통 QR만 등록하면 택시를 탈 필요가 없습니다.',
           transports: [
-            { badge: '국내선보다 쌈', title: '평일 특가 왕복 항공권 (기내 배낭 10kg)', meta: '왕복 기준 · 인천 출발 1시간 20분 소요', basePrice: 119000 },
-            { badge: '주말 끼고 특가', title: '금~일/토~월 얼리버드 왕복 특가', meta: '왕복 기준 · 수하물 제외 기본 운임', basePrice: 149000 },
-            { badge: '수하물 포함', title: '특가 왕복 + 위탁수하물 20kg', meta: '왕복 기준 · 칭다오 맥주 기념품 구매 시', basePrice: 179000 }
+            { badge: '국내선 수준', title: '평일 특가 왕복 항공권 (기내 배낭 10kg)', meta: '왕복 기준 · 인천 출발 1시간 20분 소요', basePrice: 119000 },
+            { badge: '주말 연계 특가', title: '금~일 / 토~월 얼리버드 왕복 특가', meta: '왕복 기준 · 수하물 제외 기본 운임', basePrice: 149000 },
+            { badge: '수하물 포함', title: '특가 왕복 + 위탁수하물 20kg', meta: '왕복 기준 · 기념품 구매 계획 시', basePrice: 179000 }
           ],
           stays: [
             { badge: '초절약 호스텔', title: '5·4 광장 인근 가성비 유스호스텔', meta: '지하철역 도보 4분 · 1박 1만 원대 초저가', perNight: 18000 },
-            { badge: '가성비 호텔', title: '타이둥 야시장 인근 3성급 비즈니스 호텔', meta: '2인 1실 기준 매우 저렴 · 쇼핑·야시장 도보권', perNight: 34000 },
-            { badge: '구시가지 감성', title: '잔교·중산로 인근 부티크 미니호텔', meta: '유럽풍 구시가지 산책 최적 위치', perNight: 38000 }
+            { badge: '가성비 호텔', title: '타이둥 야시장 인근 3성급 비즈니스 호텔', meta: '2인 1실 기준 매우 저렴 · 야시장 도보권', perNight: 34000 },
+            { badge: '구시가지 감성', title: '잔교 · 중산로 인근 부티크 미니호텔', meta: '유럽풍 구시가지 산책 최적 위치', perNight: 38000 }
           ],
           spots: [
-            { id: 'qd1', name: '5·4 광장 무료 LED 빌딩 야경 레이저쇼', category: 'night', price: 0, desc: '바다 앞 수십 개의 초고층 빌딩 전체가 거대한 스크린으로 변하는 무료 야경 쇼입니다.', tip: '밤 7시 30분~9시 사이 점등되며, 바닷가 산책로에서 무료 관람합니다.' },
-            { id: 'qd2', name: '타이둥 야시장 양꼬치 & 볶음면 만찬', category: 'food', price: 5500, desc: '활기찬 로컬 야시장에서 1개 500원대 양꼬치와 철판 요리를 배불리 먹습니다.', tip: '비닐봉지에 담아 파는 신선한 1공장 원액 생맥주도 단돈 1~2천 원대입니다.' },
-            { id: 'qd3', name: '소어산 공원 & 팔대관 유럽풍 거리 산책', category: 'walk', price: 0, desc: '붉은 지붕의 유럽식 건축물과 칭다오 해안을 한눈에 담는 무료 도보 코스입니다.', tip: '소어산 공원 전망대 역시 무료 개방되어 가성비가 뛰어납니다.' },
-            { id: 'qd4', name: '잔교(Zhanqiao Pier) 바다 위 산책로', category: 'free', price: 0, desc: '칭다오 맥주 라벨에 그려진 상징적인 바다 위 다리를 무료로 걸어볼 수 있습니다.', tip: '갈매기 떼와 바다 바람을 맞으며 사진 찍기 좋은 0원 명소입니다.' }
+            { id: 'qd1', name: '5·4 광장 무료 LED 빌딩 야경 쇼', category: 'night', price: 0, desc: '해변 앞 수십 개의 고층 빌딩 외벽이 거대한 미디어 파사드로 변하는 무료 야경입니다.', tip: '밤 7시 30분~9시 사이 점등되며 바닷가 산책로에서 무료 관람합니다.' },
+            { id: 'qd2', name: '타이둥 야시장 양꼬치 & 볶음면 만찬', category: 'food', price: 5500, desc: '활기찬 로컬 야시장에서 500원대 양꼬치와 철판 요리를 합리적으로 즐깁니다.', tip: '신선한 1공장 원액 생맥주 역시 1~2천 원대로 즐길 수 있습니다.' },
+            { id: 'qd3', name: '소어산 공원 & 팔대관 유럽풍 거리 산책', category: 'walk', price: 0, desc: '붉은 지붕의 유럽식 건축물과 칭다오 해안을 한눈에 담는 무료 도보 코스입니다.', tip: '소어산 공원 전망대 역시 무료로 개방되어 있습니다.' },
+            { id: 'qd4', name: '잔교(Zhanqiao Pier) 바다 위 산책로', category: 'free', price: 0, desc: '칭다오의 상징적인 바다 위 부두 산책로를 입장료 없이 걸어볼 수 있습니다.', tip: '갈매기 떼와 해안 풍경을 배경으로 사진 남기기 좋은 무료 명소입니다.' }
           ]
         },
         {
           id: 'gyeongju',
           name: '경주',
-          region: '국내 경상권 · 야경·뚜벅이 역사',
-          emoji: '🏛️',
+          region: '국내 경상권 · 야경 · 도보 역사',
           themes: ['domestic', 'walk'],
           dailyFood: 22000,
-          desc: '대릉원 주변 고분길, 첨성대, 월정교, 황리단길까지 주요 명소가 모두 도보 15분 내에 모여 있어 교통비가 거의 들지 않습니다.',
-          savingTip: '첨성대와 계림, 월정교 야경은 모두 입장료 0원입니다. 저녁 산책만으로도 경주의 하이라이트를 만끽할 수 있습니다.',
+          desc: '대릉원 고분길, 첨성대, 월정교, 황리단길까지 주요 명소가 모두 도보 15분 내에 모여 있어 교통비가 거의 들지 않습니다.',
+          savingTip: '첨성대와 계림, 월정교 야경은 모두 입장료 0원입니다. 저녁 도보 산책만으로도 경주의 정취를 충분히 느낄 수 있습니다.',
           transports: [
-            { badge: '초저가 버스', title: '고속버스·시외버스 왕복 (황리단길 도보권)', meta: '왕복 기준 · 터미널에서 주요 유적지까지 도보 10분', basePrice: 32000 },
-            { badge: 'KTX 특가', title: '신경주역 KTX 조조·할인 왕복', meta: '왕복 기준 · 역 앞 시내버스(1,500원)로 시내 진입', basePrice: 64000 },
-            { badge: '대구·부산권', title: '광역 시외버스·무궁화호 왕복', meta: '왕복 기준 · 당일치기나 1박 2일에 최적', basePrice: 14000 }
+            { badge: '초저가 버스', title: '고속버스 · 시외버스 왕복 (황리단길 도보권)', meta: '왕복 기준 · 터미널에서 주요 유적지까지 도보 10분', basePrice: 32000 },
+            { badge: 'KTX 특가', title: '신경주역 KTX 조조 · 할인 왕복', meta: '왕복 기준 · 역 앞 시내버스(1,500원)로 시내 진입', basePrice: 64000 },
+            { badge: '대구 · 부산권', title: '광역 시외버스 · 무궁화호 왕복', meta: '왕복 기준 · 당일치기나 1박 2일에 최적', basePrice: 14000 }
           ],
           stays: [
-            { badge: '초절약 게하', title: '황리단길·터미널 사이 게스트하우스', meta: '도미토리 · 조식(토스트·계란) 무료 제공', perNight: 22000 },
+            { badge: '초절약 게하', title: '황리단길 · 터미널 사이 게스트하우스', meta: '도미토리 · 조식(토스트 · 계란) 무료 제공', perNight: 22000 },
             { badge: '가성비 한옥', title: '대릉원 인근 소형 한옥 민박 (평일 특가)', meta: '개인 욕실 완비 · 야경 산책 후 바로 귀가 가능', perNight: 40000 },
             { badge: '역세권 모텔', title: '경주시외버스터미널 도보 2분 비즈니스룸', meta: '짐 보관 무료 · 가성비 최우선 숙소', perNight: 36000 }
           ],
           spots: [
-            { id: 'gj1', name: '첨성대 & 동부사적지 꽃밭·야경 산책', category: 'night', price: 0, desc: '조명이 켜진 첨성대와 드넓은 야생화 단지를 24시간 무료로 산책할 수 있습니다.', tip: '동궁과 월지 바로 옆에 있어 무료로 동일한 신라 밤 정취를 느낍니다.' },
-            { id: 'gj2', name: '월정교 & 교촌한옥마을 무료 야경 투어', category: 'night', price: 0, desc: '남천 물 위에 비치는 화려한 목조 교량 월정교의 반영을 무료로 감상합니다.', tip: '밤 8시~10시 사이 다리 아래 징검다리 쪽에서 찍는 사진이 최고입니다.' },
-            { id: 'gj3', name: '경주 중앙시장 야시장 & 분식 투어', category: 'food', price: 6500, desc: '황리단길 절반 가격으로 떡볶이, 순대, 야시장 꼬치와 전을 푸짐하게 즐깁니다.', tip: '터미널과 가까워 여행 첫날 저녁이나 마지막 날 식사로 딱입니다.' },
-            { id: 'gj4', name: '황리단길 골목 산책 & 십원빵 간식', category: 'walk', price: 3500, desc: '고즈넉한 한옥 개조 골목을 구경하며 따뜻한 치즈 십원빵 하나를 맛봅니다.', tip: '비싼 카페 대신 골목 구경 후 대릉원 돌담길을 걸어보세요.' }
+            { id: 'gj1', name: '첨성대 & 동부사적지 야경 산책', category: 'night', price: 0, desc: '조명이 켜진 첨성대와 드넓은 사적지 산책로를 24시간 무료로 거닐 수 있습니다.', tip: '유료 유적지 바로 옆에 있어 무료로 동일한 신라 밤 정취를 느낍니다.' },
+            { id: 'gj2', name: '월정교 & 교촌한옥마을 무료 야경 투어', category: 'night', price: 0, desc: '남천 물 위에 비치는 목조 교량 월정교의 야경을 무료로 감상합니다.', tip: '밤 8시~10시 사이 다리 아래 징검다리 부근의 구도가 가장 좋습니다.' },
+            { id: 'gj3', name: '경주 중앙시장 야시장 & 분식 투어', category: 'food', price: 6500, desc: '황리단길 절반 가격으로 떡볶이, 순대, 야시장 꼬치와 전을 푸짐하게 즐깁니다.', tip: '터미널과 가까워 첫날 저녁이나 마지막 날 식사로 알맞습니다.' },
+            { id: 'gj4', name: '황리단길 골목 산책 & 십원빵 간식', category: 'walk', price: 3500, desc: '한옥 개조 골목을 구경하며 따뜻한 치즈 십원빵 하나를 맛봅니다.', tip: '골목 구경 후 대릉원 돌담길을 따라 무료 산책을 이어가세요.' }
           ]
         },
         {
           id: 'osaka',
           name: '오사카',
           region: '일본 간사이 · 특가 항공 먹방',
-          emoji: '🐙',
           themes: ['overseas', 'food'],
           dailyFood: 30000,
-          desc: '노선이 많아 1년 내내 초특가 항공권이 가장 자주 풀리는 도시! 도보 중심 관광과 저렴한 서민 먹거리 천국입니다.',
-          savingTip: '주유패스 등 비싼 패스를 무조건 사지 말고, 무료 야경 명소와 도보 코스로만 짜면 교통비를 절반 이상 아낍니다.',
+          desc: '운항 노선이 많아 1년 내내 초특가 항공권이 자주 풀리는 도시로, 도보 중심 관광과 저렴한 서민 먹거리가 특징입니다.',
+          savingTip: '고가 주유패스를 무조건 구매하기보다 무료 야경 명소와 도보 코스로 동선을 짜면 교통비를 절반 이하로 줄일 수 있습니다.',
           transports: [
             { badge: '얼리버드 특가', title: '화·수 출발 LCC 왕복 초특가 (기내 배낭)', meta: '왕복 기준 · 간사이 공항 난카이 일반열차 시내 이동', basePrice: 145000 },
-            { badge: '가성비 왕복', title: '평일 오전 출발·오후 귀국 LCC 왕복', meta: '왕복 기준 · 수하물 제외 기본 운임', basePrice: 179000 },
-            { badge: '수하물 포함', title: '특가 왕복 + 위탁수하물 15kg', meta: '왕복 기준 · 돈키호테 쇼핑 계획 시 추천', basePrice: 215000 }
+            { badge: '가성비 왕복', title: '평일 오전 출발 · 오후 귀국 LCC 왕복', meta: '왕복 기준 · 수하물 제외 기본 운임', basePrice: 179000 },
+            { badge: '수하물 포함', title: '특가 왕복 + 위탁수하물 15kg', meta: '왕복 기준 · 쇼핑 계획 시 추천', basePrice: 215000 }
           ],
           stays: [
-            { badge: '초절약 호스텔', title: '난바·신사이바시 도보권 캡슐 호스텔', meta: '도톤보리 도보 5분 · 막차 걱정 없는 핵심 위치', perNight: 28000 },
-            { badge: '가성비 싱글', title: '신이마미야·동물원앞역 초저가 비즈니스 호텔', meta: '1인 1실 개인 냉장고·TV 완비 · 지하철 초역세권', perNight: 35000 },
-            { badge: '도톤보리 인근', title: '닛폰바시역 도보 3분 미니 호텔', meta: '구로몬 시장·난바 도보 이동 가능', perNight: 49000 }
+            { badge: '초절약 호스텔', title: '난바 · 신사이바시 도보권 캡슐 호스텔', meta: '도톤보리 도보 5분 · 막차 걱정 없는 핵심 위치', perNight: 28000 },
+            { badge: '가성비 싱글', title: '신이마미야 · 동물원앞역 비즈니스 호텔', meta: '1인 1실 개인 냉장고 · TV 완비 · 지하철 초역세권', perNight: 35000 },
+            { badge: '도톤보리 인근', title: '닛폰바시역 도보 3분 미니 호텔', meta: '구로몬 시장 · 난바 도보 이동 가능', perNight: 49000 }
           ],
           spots: [
-            { id: 'os1', name: '도톤보리 글리코상 & 강변 무료 야경 산책', category: 'night', price: 0, desc: '오사카의 상징 네온사인과 화려한 간판 거리를 걸으며 활기를 만끽합니다.', tip: '강변 산책로(톤보리 리버워크)를 따라 걸으면 인파를 피해 야경을 즐깁니다.' },
-            { id: 'os2', name: '오사카성 공원 무료 산책 & 외관 감상', category: 'free', price: 0, desc: '거대한 해자와 웅장한 천수각 외관을 넓은 공원에서 무료로 둘러볼 수 있습니다.', tip: '천수각 내부 박물관만 유료이고 공원 전체와 사진 스팟은 모두 무료입니다.' },
-            { id: 'os3', name: '신세카이 100엔대 쿠시카츠 & 타코야키', category: 'food', price: 6500, desc: '1꼬치 1,000원대 튀김 꼬치와 갓 구운 8알 타코야키로 로컬 감성을 느낍니다.', tip: '신세카이 골목 안쪽 현지인 선술집·분식점이 가격대가 훨씬 착합니다.' },
-            { id: 'os4', name: '난바 파크스 루프탑 무료 공중정원', category: 'free', price: 0, desc: '쇼핑몰 옥상에 계단식으로 조성된 무료 숲속 정원에서 도심 휴식을 취합니다.', tip: '무료 벤치가 많아 테이크아웃 음료와 함께 쉬어가기 좋습니다.' }
+            { id: 'os1', name: '도톤보리 글리코상 & 강변 무료 야경 산책', category: 'night', price: 0, desc: '오사카의 상징적인 네온사인 거리를 걸으며 활기찬 분위기를 만끽합니다.', tip: '강변 산책로(톤보리 리버워크)를 따라 걸으면 한결 여유롭게 야경을 즐깁니다.' },
+            { id: 'os2', name: '오사카성 공원 무료 산책 & 외관 감상', category: 'free', price: 0, desc: '거대한 해자와 천수각 외관을 넓은 공원에서 무료로 둘러볼 수 있습니다.', tip: '천수각 내부 박물관만 유료이고 공원 전체와 사진 명소는 모두 무료입니다.' },
+            { id: 'os3', name: '신세카이 100엔대 쿠시카츠 & 타코야키', category: 'food', price: 6500, desc: '1꼬치 1,000원대 튀김 꼬치와 갓 구운 타코야키로 로컬 미식을 즐깁니다.', tip: '골목 안쪽 현지인 분식점·선술집이 가격대가 훨씬 합리적입니다.' },
+            { id: 'os4', name: '난바 파크스 루프탑 무료 공중정원', category: 'free', price: 0, desc: '복합몰 옥상에 계단식으로 조성된 무료 숲속 정원에서 휴식을 취합니다.', tip: '무료 벤치가 많아 테이크아웃 음료와 함께 쉬어가기 좋습니다.' }
           ]
         },
         {
           id: 'jeju',
           name: '제주도 비수기 뚜벅이',
-          region: '국내 제주 · 평일 1만 원대 항공',
-          emoji: '🍊',
+          region: '국내 제주 · 평일 특가 항공',
           themes: ['domestic', 'walk'],
           dailyFood: 26000,
-          desc: '렌터카 없이 간선버스와 도보 올레길만 이용하고, 화·수요일 초특가 항공권을 잡으면 해외보다 훨씬 싸게 다녀오는 제주 여행입니다.',
-          savingTip: '렌터카·주유비(1일 6~8만 원)를 과감히 빼고 시내버스(1,150원) + 게스트하우스 동행/도보 코스를 활용하세요.',
+          desc: '렌터카 없이 간선버스와 올레길 도보 코스만 이용하고, 화·수요일 특가 항공권을 잡으면 매우 저렴하게 다녀올 수 있습니다.',
+          savingTip: '렌터카·주유비(1일 6~8만 원)를 제외하고 시내버스(1,150원)와 게스트하우스·도보 코스를 활용하세요.',
           transports: [
-            { badge: '화·수 초특가', title: '평일 비수기 저비용항공 왕복 특가', meta: '왕복 기준 · 유류할증료·공항세 포함 초특가 타임세일', basePrice: 49000 },
+            { badge: '화·수 초특가', title: '평일 비수기 저비용항공 왕복 특가', meta: '왕복 기준 · 유류할증료 · 공항세 포함 타임세일', basePrice: 49000 },
             { badge: '가성비 왕복', title: '얼리버드 제주 왕복 항공권 (기내 10kg)', meta: '왕복 기준 · 조조/심야 시간대 활용', basePrice: 78000 },
-            { badge: '완도·목포 배편', title: '야간 여객선 3등실 왕복 특가', meta: '왕복 기준 · 바다 낭만과 숙박비 절약 효과', basePrice: 65000 }
+            { badge: '완도 · 목포 배편', title: '야간 여객선 3등실 왕복 특가', meta: '왕복 기준 · 바다 이동과 숙박비 절약 효과', basePrice: 65000 }
           ],
           stays: [
-            { badge: '초절약 게하', title: '제주시청·동문시장 인근 게스트하우스', meta: '도미토리 · 공항 버스 15분 · 조식 토스트 제공', perNight: 22000 },
-            { badge: '오션뷰 게하', title: '애월·함덕 해변 도보 2분 뚜벅이 게스트하우스', meta: '해변 산책 최적화 · 버스정류장 바로 앞', perNight: 26000 },
-            { badge: '가성비 1인실', title: '서귀포 올레시장 인근 비즈니스 미니룸', meta: '개인 욕실 · 천지연폭포·이중섭거리 도보권', perNight: 42000 }
+            { badge: '초절약 게하', title: '제주시청 · 동문시장 인근 게스트하우스', meta: '도미토리 · 공항 버스 15분 · 조식 토스트 제공', perNight: 22000 },
+            { badge: '오션뷰 게하', title: '애월 · 함덕 해변 도보 2분 게스트하우스', meta: '해변 산책 최적화 · 버스정류장 바로 앞', perNight: 26000 },
+            { badge: '가성비 1인실', title: '서귀포 올레시장 인근 비즈니스 미니룸', meta: '개인 욕실 · 천지연폭포 · 이중섭거리 도보권', perNight: 42000 }
           ],
           spots: [
-            { id: 'jj_1', name: '함덕 서우봉 해변 & 무료 오름 트레킹', category: 'free', price: 0, desc: '에메랄드빛 바다와 유채꽃·잔디 언덕 서우봉 정상을 입장료 없이 오릅니다.', tip: '제주시에서 101번 급행·간선버스로 한 번에 도착합니다.' },
-            { id: 'jj_2', name: '동문재래시장 야시장 & 고기국수 한 그릇', category: 'food', price: 8000, desc: '비싼 흑돼지 구이 대신 진한 제주 고기국수와 시장 떡볶이·오메기떡을 즐깁니다.', tip: '시장 안쪽 현지인 국수집은 7~8천 원대로 양이 매우 푸짐합니다.' },
-            { id: 'jj_3', name: '용두암 ~ 이호테우 해변 무료 해안 도보길', category: 'walk', price: 0, desc: '공항 근처에서 출발해 바다와 비행기 이착륙을 보며 걷는 무료 올레 17코스 구간입니다.', tip: '여행 첫날이나 마지막 날 공항 이동 전후로 걷기 완벽합니다.' },
-            { id: 'jj_4', name: '새별오름 또는 다랑쉬오름 무료 일몰 산책', category: 'free', price: 0, desc: '제주 특유의 완만한 화산 오름 능선에서 황금빛 억새와 일몰을 무료로 감상합니다.', tip: '입장료 0원, 운동화만 있으면 누구나 오를 수 있습니다.' }
+            { id: 'jj_1', name: '함덕 서우봉 해변 & 무료 오름 트레킹', category: 'free', price: 0, desc: '에메랄드빛 바다와 잔디 언덕 서우봉 정상을 입장료 없이 오릅니다.', tip: '제주시에서 101번 간선버스로 환승 없이 도착합니다.' },
+            { id: 'jj_2', name: '동문재래시장 야시장 & 고기국수 한 그릇', category: 'food', price: 8000, desc: '진한 제주 고기국수와 시장 떡볶이·오메기떡으로 알차게 식사를 해결합니다.', tip: '시장 안쪽 현지인 국수집은 7~8천 원대로 양이 푸짐합니다.' },
+            { id: 'jj_3', name: '용두암 ~ 이호테우 해변 무료 해안 도보길', category: 'walk', price: 0, desc: '공항 근처에서 출발해 바다와 항공기 이착륙을 보며 걷는 무료 올레길 구간입니다.', tip: '여행 첫날이나 마지막 날 공항 이동 전후로 걷기 좋습니다.' },
+            { id: 'jj_4', name: '새별오름 또는 다랑쉬오름 무료 일몰 산책', category: 'free', price: 0, desc: '완만한 화산 오름 능선에서 억새와 일몰을 무료로 감상할 수 있습니다.', tip: '입장료 0원, 편한 운동화만 있으면 누구나 오를 수 있습니다.' }
           ]
         }
       ];
 
-      // 기본 준비물 체크리스트
       const DEFAULT_CHECKLIST = [
         { id: 'c1', text: '10kg 이하 기내용 백팩/캐리어 (위탁수하물 0원 방어)', checked: true },
         { id: 'c2', text: '빈 텀블러/물통 챙기기 (공항 정수기 및 편의점 물값 절약)', checked: false },
         { id: 'c3', text: '대용량 보조배터리 & 충전 케이블 (현지 대여비 절약)', checked: false },
         { id: 'c4', text: '수수료 무료 트래블 카드 + 비상용 소액 현금', checked: false },
-        { id: 'c5', text: '상비약(소화제·진통제·밴드) & 미니 세면도구', checked: false },
+        { id: 'c5', text: '상비약(소화제 · 진통제 · 밴드) & 미니 세면도구', checked: false },
         { id: 'c6', text: '구글맵/네이버지도 오프라인 저장 & 교통앱 사전 등록', checked: false }
       ];
 
-      // 출발지별 교통비 보정 함수
       function getDepartureAdjustment(destId, departure) {
         const isJapanOrTaiwan = ['fukuoka', 'taipei', 'osaka', 'qingdao'].includes(destId);
         if (departure === 'seoul') return 0;
@@ -1509,7 +1672,6 @@
         return 0;
       }
 
-      // 기본 상태
       const defaultState = {
         budget: 300000,
         days: 2,
@@ -1520,7 +1682,7 @@
         selectedStayIdx: 0,
         addedSpots: [
           { destId: 'fukuoka', spotId: 'fk1', name: '오호리 공원 & 일본정원 외곽 산책', price: 0, category: 'night' },
-          { destId: 'fukuoka', spotId: 'fk4', name: '290엔 하카타 돈코츠 라멘 맛집', price: 2900, category: 'food' }
+          { destId: 'fukuoka', spotId: 'fk4', name: '290엔 하카타 돈코츠 라멘 노포', price: 2900, category: 'food' }
         ],
         bookmarkedDests: ['fukuoka', 'busan'],
         checklist: DEFAULT_CHECKLIST,
@@ -1529,7 +1691,6 @@
         spotFilter: 'all'
       };
 
-      // localStorage 안전 로드/저장
       function loadState() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
@@ -1545,13 +1706,12 @@
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         } catch (e) {
-          // 스토리지 제한 환경 무시
+          // 스토리지 제한 무시
         }
       }
 
       let state = loadState();
 
-      // 유틸 함수
       function formatKRW(num) {
         return Math.max(0, Math.round(num)).toLocaleString('ko-KR') + '원';
       }
@@ -1573,10 +1733,9 @@
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
           el.classList.remove('show');
-        }, 2300);
+        }, 2200);
       }
 
-      // 특정 여행지의 최저 예상 총액 계산 (MVP 1 카드용)
       function calcDestEstimate(dest) {
         const adj = getDepartureAdjustment(dest.id, state.departure);
         const minTransport = Math.max(5000, dest.transports[0].basePrice + adj);
@@ -1591,7 +1750,6 @@
         };
       }
 
-      // 현재 선택된 플랜의 실시간 견적 계산
       function calcActivePlanEstimate() {
         const dest = getDestById(state.selectedDestId);
         const adj = getDepartureAdjustment(dest.id, state.departure);
@@ -1604,9 +1762,7 @@
         const spotsPrice = currentSpots.reduce((acc, cur) => acc + cur.price, 0);
         const basicMealGuide = dest.dailyFood * (state.days + 1);
 
-        // 확정 예약 항목 (교통 + 숙소 + 담은 유료 관광지/식도락)
         const fixedTotal = transportPrice + stayPrice + spotsPrice;
-        // 식비 가이드 포함 전체 예상액
         const fullEstimated = transportPrice + stayPrice + Math.max(spotsPrice, basicMealGuide);
 
         return {
@@ -1623,7 +1779,6 @@
         };
       }
 
-      // 탭 전환
       function switchTab(tabName) {
         state.activeTab = tabName;
         saveState();
@@ -1640,7 +1795,6 @@
         renderAll();
       }
 
-      // 글씨 크기 적용
       function applyFontSize() {
         const htmlEl = document.documentElement;
         const btn = document.getElementById('fontToggleBtn');
@@ -1656,17 +1810,23 @@
         }
       }
 
+      function getBookmarkSvg(saved) {
+        if (saved) {
+          return `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`;
+        }
+        return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>`;
+      }
+
       // [렌더링 1] 여행지 추천 목록
       function renderDestinations() {
         const container = document.getElementById('destListContainer');
         const infoEl = document.getElementById('destResultInfo');
 
-        let filtered = DESTINATIONS.filter(dest => {
+        const filtered = DESTINATIONS.filter(dest => {
           if (state.theme === 'all') return true;
           return dest.themes.includes(state.theme);
         });
 
-        // 예산 적합도 순 정렬 (예산 이내 우선, 그 안에서 저렴한 순)
         const enriched = filtered.map(dest => {
           const est = calcDestEstimate(dest);
           const diff = state.budget - est.total;
@@ -1679,50 +1839,55 @@
         });
 
         const fitCount = enriched.filter(item => item.diff >= 0).length;
-        infoEl.textContent = `총 ${enriched.length}곳 중 내 예산(${formatKRW(state.budget)}) 이내 여행지 ${fitCount}곳 추천!`;
+        infoEl.textContent = `총 ${enriched.length}곳 중 내 예산(${formatKRW(state.budget)}) 이내 여행지 ${fitCount}곳`;
 
         container.innerHTML = enriched.map(({ dest, est, diff }) => {
           const isSelected = state.selectedDestId === dest.id;
           const isSaved = state.bookmarkedDests.includes(dest.id);
 
           let pillClass = 'pill-fit';
-          let pillText = `✅ 예산 내 여유 (${formatKRW(diff)} 남음)`;
+          let pillText = `예산 내 ${formatKRW(diff)} 여유`;
           if (diff < 0 && diff >= -35000) {
             pillClass = 'pill-tight';
-            pillText = `⚡ 식비 조금 아끼면 가능 (${formatKRW(Math.abs(diff))} 초과)`;
+            pillText = `식비 절약 시 가능 (${formatKRW(Math.abs(diff))} 초과)`;
           } else if (diff < -35000) {
             pillClass = 'pill-over';
-            pillText = `💸 일정 축소 또는 예산 +${formatKRW(Math.abs(diff))} 필요`;
+            pillText = `예산 ${formatKRW(Math.abs(diff))} 추가 필요`;
           }
 
           return `
             <article class="dest-card ${isSelected ? 'selected' : ''}">
               <div>
                 <div class="dest-top">
-                  <div class="dest-emoji" aria-hidden="true">${dest.emoji}</div>
-                  <div class="dest-title-wrap">
+                  <div>
                     <div class="dest-region">${dest.region}</div>
-                    <h3 class="dest-name">${dest.name} (${getDaysLabel(state.days)})</h3>
+                    <h3 class="dest-name">
+                      <span>${dest.name}</span>
+                      <span class="days-tag">${getDaysLabel(state.days)}</span>
+                    </h3>
                   </div>
                   <button type="button" class="bookmark-btn ${isSaved ? 'saved' : ''}" data-bookmark="${dest.id}" aria-label="${dest.name} 찜하기">
-                    ${isSaved ? '⭐' : '☆'}
+                    ${getBookmarkSvg(isSaved)}
                   </button>
                 </div>
 
-                <div class="status-pill ${pillClass}">${pillText}</div>
+                <div class="status-pill ${pillClass} num">
+                  <span class="status-dot"></span>
+                  <span>${pillText}</span>
+                </div>
                 <p class="dest-desc">${dest.desc}</p>
 
-                <div class="cost-breakdown">
+                <div class="cost-breakdown num">
                   <div class="cost-row">
-                    <span>✈️ 왕복 교통 최저가</span>
+                    <span>왕복 교통 최저가</span>
                     <span>${formatKRW(est.transport)}</span>
                   </div>
                   <div class="cost-row">
-                    <span>🛏️ 숙박비 (${state.days === 0 ? '당일 0박' : state.days + '박'})</span>
+                    <span>숙박비 (${state.days === 0 ? '당일 0박' : state.days + '박'})</span>
                     <span>${formatKRW(est.stay)}</span>
                   </div>
                   <div class="cost-row">
-                    <span>🍜 로컬 식비·간식 (${state.days + 1}일)</span>
+                    <span>로컬 식비 · 간식 (${state.days + 1}일)</span>
                     <span>${formatKRW(est.food)}</span>
                   </div>
                   <div class="cost-row total">
@@ -1732,13 +1897,13 @@
                 </div>
 
                 <div class="saving-tip-box">
-                  <strong>💰 짠내 팁:</strong> ${dest.savingTip}
+                  <span class="tip-label">TIP</span>${dest.savingTip}
                 </div>
               </div>
 
               <div class="dest-actions">
                 <button type="button" class="btn btn-outline" data-select-stay="${dest.id}">
-                  항공·숙소 고르기
+                  항공 · 숙소 선택
                 </button>
                 <button type="button" class="btn btn-primary" data-select-spot="${dest.id}">
                   0원 관광지 담기
@@ -1754,23 +1919,21 @@
         const dest = getDestById(state.selectedDestId);
         const adj = getDepartureAdjustment(dest.id, state.departure);
 
-        // 셀렉트 동기화
         const staySelect = document.getElementById('stayDestSelect');
         staySelect.innerHTML = DESTINATIONS.map(d =>
-          `<option value="${d.id}" ${d.id === dest.id ? 'selected' : ''}>${d.emoji} ${d.name} (${d.region})</option>`
+          `<option value="${d.id}" ${d.id === dest.id ? 'selected' : ''}>${d.name} (${d.region})</option>`
         ).join('');
 
         const depNames = {
           seoul: '수도권 출발',
-          busan: '부산·경남 출발',
-          daegu: '대구·경북 출발',
-          jeju: '제주·기타 출발'
+          busan: '부산 · 경남 출발',
+          daegu: '대구 · 경북 출발',
+          jeju: '제주 · 기타 출발'
         };
         document.getElementById('transportSubLabel').textContent =
           `기준: ${depNames[state.departure]} → ${dest.name} 왕복 (1인 기준)`;
         document.getElementById('stayDaysText').textContent = getDaysLabel(state.days);
 
-        // 교통 옵션 렌더링
         const tContainer = document.getElementById('transportOptionList');
         tContainer.innerHTML = dest.transports.map((opt, idx) => {
           const finalPrice = Math.max(5000, opt.basePrice + adj);
@@ -1784,23 +1947,22 @@
               </div>
               <div class="option-price-box">
                 <div>
-                  <div class="option-price">${formatKRW(finalPrice)}</div>
+                  <div class="option-price num">${formatKRW(finalPrice)}</div>
                   <div class="option-price-sub">왕복 1인 예상가</div>
                 </div>
-                <button type="button" class="btn ${isSelected ? 'btn-primary' : 'btn-ghost'}" style="min-height:40px; padding:6px 12px; font-size:0.84rem;">
-                  ${isSelected ? '✓ 선택됨' : '선택하기'}
+                <button type="button" class="btn ${isSelected ? 'btn-primary' : 'btn-ghost'}" style="min-height:38px; padding:6px 12px; font-size:0.82rem;">
+                  ${isSelected ? '선택됨' : '선택하기'}
                 </button>
               </div>
             </div>
           `;
         }).join('');
 
-        // 숙소 옵션 렌더링
         const sContainer = document.getElementById('stayOptionList');
         if (state.days === 0) {
           sContainer.innerHTML = `
             <div class="tip-banner" style="margin-bottom:0;">
-              🎉 현재 <strong>당일치기</strong> 일정으로 설정되어 숙박비가 <strong>0원</strong>입니다! (숙박을 원하시면 1번 탭에서 1박 2일 이상을 선택하세요.)
+              현재 <strong>당일치기</strong> 일정으로 설정되어 숙박비가 <strong>0원</strong>입니다. 숙박이 필요하면 여행지 탭에서 1박 2일 이상을 선택해 주세요.
             </div>
           `;
           return;
@@ -1818,11 +1980,11 @@
               </div>
               <div class="option-price-box">
                 <div>
-                  <div class="option-price">${formatKRW(totalStay)}</div>
-                  <div class="option-price-sub">1박 ${formatKRW(opt.perNight)} × ${state.days}박</div>
+                  <div class="option-price num">${formatKRW(totalStay)}</div>
+                  <div class="option-price-sub num">1박 ${formatKRW(opt.perNight)} × ${state.days}박</div>
                 </div>
-                <button type="button" class="btn ${isSelected ? 'btn-primary' : 'btn-ghost'}" style="min-height:40px; padding:6px 12px; font-size:0.84rem;">
-                  ${isSelected ? '✓ 선택됨' : '선택하기'}
+                <button type="button" class="btn ${isSelected ? 'btn-primary' : 'btn-ghost'}" style="min-height:38px; padding:6px 12px; font-size:0.82rem;">
+                  ${isSelected ? '선택됨' : '선택하기'}
                 </button>
               </div>
             </div>
@@ -1833,11 +1995,11 @@
       // [렌더링 3] 0원 & 저가 관광지 추천
       function renderSpots() {
         const dest = getDestById(state.selectedDestId);
-        document.getElementById('spotDestTitle').textContent = `${dest.emoji} ${dest.name}`;
+        document.getElementById('spotDestTitle').textContent = dest.name;
 
         const spotSelect = document.getElementById('spotDestSelect');
         spotSelect.innerHTML = DESTINATIONS.map(d =>
-          `<option value="${d.id}" ${d.id === dest.id ? 'selected' : ''}>${d.emoji} ${d.name} (${d.region})</option>`
+          `<option value="${d.id}" ${d.id === dest.id ? 'selected' : ''}>${d.name} (${d.region})</option>`
         ).join('');
 
         const filteredSpots = dest.spots.filter(s => {
@@ -1848,14 +2010,14 @@
 
         const container = document.getElementById('spotListContainer');
         if (filteredSpots.length === 0) {
-          container.innerHTML = `<div class="card empty-state" style="grid-column:1/-1;">선택한 필터에 해당하는 장소가 없습니다. '전체' 버튼을 눌러 확인해 보세요!</div>`;
+          container.innerHTML = `<div class="card empty-state" style="grid-column:1/-1;">선택한 필터에 해당하는 장소가 없습니다. '전체' 버튼을 눌러 확인해 보세요.</div>`;
           return;
         }
 
         const catLabelMap = {
           free: '0원 무료 명소',
           food: '가성비 먹거리',
-          night: '무료 야경·산책',
+          night: '무료 야경 · 산책',
           walk: '도보 힐링 코스'
         };
 
@@ -1866,16 +2028,16 @@
               <div>
                 <div class="spot-header">
                   <span class="spot-cat">${catLabelMap[spot.category] || '추천 스팟'}</span>
-                  <span class="spot-price-tag ${spot.price > 0 ? 'paid' : ''}">
+                  <span class="spot-price-tag num ${spot.price > 0 ? 'paid' : ''}">
                     ${spot.price === 0 ? '입장료 0원' : formatKRW(spot.price)}
                   </span>
                 </div>
                 <h3 class="spot-name">${spot.name}</h3>
                 <p class="spot-desc">${spot.desc}</p>
-                <div class="spot-tip">💡 ${spot.tip}</div>
+                <div class="spot-tip"><span class="tip-label">TIP</span>${spot.tip}</div>
               </div>
               <button type="button" class="btn ${isAdded ? 'btn-mint' : 'btn-outline'} btn-block" data-toggle-spot="${spot.id}">
-                ${isAdded ? '✓ 내 일정에 담김 (취소)' : '+ 내 여행 일정에 담기'}
+                ${isAdded ? '일정에 담김 (선택 해제)' : '내 여행 일정에 담기'}
               </button>
             </article>
           `;
@@ -1887,66 +2049,64 @@
         const plan = calcActivePlanEstimate();
         const remain = state.budget - plan.fullEstimated;
 
-        // 상단 견적 배너
         const banner = document.getElementById('savedSummaryBanner');
         banner.innerHTML = `
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
             <div>
-              <div style="font-size:0.82rem; opacity:0.8;">현재 선택된 초저가 플랜</div>
-              <div style="font-size:1.3rem; font-weight:900;">${plan.dest.emoji} ${plan.dest.name} (${getDaysLabel(state.days)})</div>
+              <div style="font-size:0.78rem; color:var(--ink-muted); font-weight:500;">현재 선택된 최저가 플랜</div>
+              <div style="font-size:1.3rem; font-weight:700; letter-spacing:-0.02em; margin-top:2px;">${plan.dest.name} (${getDaysLabel(state.days)})</div>
             </div>
-            <div style="background:${remain >= 0 ? '#10B981' : '#F97316'}; padding:6px 12px; border-radius:999px; font-size:0.84rem; font-weight:800;">
-              ${remain >= 0 ? `예산 내 ${formatKRW(remain)} 여유` : `예산 ${formatKRW(Math.abs(remain))} 초과`}
+            <div class="status-pill ${remain >= 0 ? 'pill-fit' : 'pill-tight'} num" style="margin-bottom:0;">
+              <span class="status-dot"></span>
+              <span>${remain >= 0 ? `예산 내 ${formatKRW(remain)} 여유` : `예산 ${formatKRW(Math.abs(remain))} 초과`}</span>
             </div>
           </div>
 
-          <div style="margin-top:12px; font-size:0.88rem; opacity:0.92; line-height:1.6;">
-            • 교통: ${plan.tOpt.title} (<strong>${formatKRW(plan.transportPrice)}</strong>)<br>
-            • 숙소: ${state.days === 0 ? '당일치기 숙박 없음 (0원)' : `${plan.sOpt.title} (<strong>${formatKRW(plan.stayPrice)}</strong>)`}<br>
-            • 담은 관광·먹거리 (${plan.currentSpots.length}곳): <strong>${formatKRW(plan.spotsPrice)}</strong>
+          <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border-light); font-size:0.86rem; color:var(--ink-sub); line-height:1.75;">
+            <div>· 교통편: ${plan.tOpt.title} (<strong class="num" style="color:var(--ink-main);">${formatKRW(plan.transportPrice)}</strong>)</div>
+            <div>· 숙소: ${state.days === 0 ? '당일치기 숙박 없음 (0원)' : `${plan.sOpt.title} (<strong class="num" style="color:var(--ink-main);">${formatKRW(plan.stayPrice)}</strong>)`}</div>
+            <div>· 담은 관광 · 먹거리 (${plan.currentSpots.length}곳): <strong class="num" style="color:var(--ink-main);">${formatKRW(plan.spotsPrice)}</strong></div>
           </div>
 
           <div class="summary-grid">
             <div class="summary-stat">
-              <div class="summary-stat-label">교통+숙소+담은 일정</div>
-              <div class="summary-stat-val" style="color:#38BDF8;">${formatKRW(plan.fixedTotal)}</div>
+              <div class="summary-stat-label">교통 + 숙소 + 담은 일정</div>
+              <div class="summary-stat-val num">${formatKRW(plan.fixedTotal)}</div>
             </div>
             <div class="summary-stat">
-              <div class="summary-stat-label">기본 식비 포함 총액</div>
-              <div class="summary-stat-val" style="color:#FBBF24;">${formatKRW(plan.fullEstimated)}</div>
+              <div class="summary-stat-label">기본 식비 포함 총 예상액</div>
+              <div class="summary-stat-val num" style="color:var(--accent);">${formatKRW(plan.fullEstimated)}</div>
             </div>
           </div>
         `;
 
-        // 담은 관광지 목록
         const savedSpotsEl = document.getElementById('savedSpotsList');
         if (plan.currentSpots.length === 0) {
           savedSpotsEl.innerHTML = `
             <div class="empty-state">
               아직 ${plan.dest.name} 일정에 담은 관광지가 없습니다.<br>
-              <button type="button" class="btn btn-primary" style="margin-top:10px;" data-jump-spot="1">0원·저가 관광지 담으러 가기</button>
+              <button type="button" class="btn btn-primary" style="margin-top:12px;" data-jump-spot="1">0원 · 저가 관광지 담으러 가기</button>
             </div>
           `;
         } else {
           savedSpotsEl.innerHTML = plan.currentSpots.map(s => `
             <div class="checklist-item">
               <div>
-                <div style="font-weight:700; font-size:0.95rem;">${s.name}</div>
-                <div style="font-size:0.82rem; color:${s.price === 0 ? 'var(--mint)' : 'var(--accent-dark)'}; font-weight:700;">
+                <div style="font-weight:700; font-size:0.92rem; color:var(--ink-main);">${s.name}</div>
+                <div class="num" style="font-size:0.8rem; color:${s.price === 0 ? 'var(--success)' : 'var(--accent)'}; font-weight:700; margin-top:2px;">
                   ${s.price === 0 ? '무료 (0원)' : formatKRW(s.price)}
                 </div>
               </div>
-              <button type="button" class="btn btn-ghost" style="min-height:38px; padding:6px 12px; font-size:0.82rem;" data-remove-spot="${s.spotId}">
+              <button type="button" class="btn btn-ghost" style="min-height:36px; padding:5px 11px; font-size:0.8rem;" data-remove-spot="${s.spotId}">
                 삭제
               </button>
             </div>
           `).join('');
         }
 
-        // 찜한 여행지 목록
         const bookmarkedEl = document.getElementById('bookmarkedList');
         if (state.bookmarkedDests.length === 0) {
-          bookmarkedEl.innerHTML = `<div class="empty-state">찜한 여행지가 없습니다. 여행지 카드 우측 상단 ☆ 버튼을 눌러 저장해 보세요.</div>`;
+          bookmarkedEl.innerHTML = `<div class="empty-state">찜한 여행지가 없습니다. 여행지 카드 우측 상단 북마크 버튼을 눌러 저장할 수 있습니다.</div>`;
         } else {
           bookmarkedEl.innerHTML = state.bookmarkedDests.map(id => {
             const d = getDestById(id);
@@ -1954,19 +2114,18 @@
             return `
               <div class="checklist-item">
                 <div>
-                  <div style="font-weight:800; font-size:0.98rem;">${d.emoji} ${d.name} <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">(${d.region})</span></div>
-                  <div style="font-size:0.84rem; color:var(--primary-dark); font-weight:700;">${getDaysLabel(state.days)} 최저 예상 ${formatKRW(est.total)}</div>
+                  <div style="font-weight:700; font-size:0.94rem; color:var(--ink-main);">${d.name} <span style="font-size:0.78rem; color:var(--ink-muted); font-weight:400;">· ${d.region}</span></div>
+                  <div class="num" style="font-size:0.81rem; color:var(--ink-sub); font-weight:500; margin-top:2px;">${getDaysLabel(state.days)} 최저 예상 ${formatKRW(est.total)}</div>
                 </div>
                 <div style="display:flex; gap:6px;">
-                  <button type="button" class="btn btn-primary" style="min-height:38px; padding:6px 12px; font-size:0.82rem;" data-apply-dest="${d.id}">불러오기</button>
-                  <button type="button" class="btn btn-ghost" style="min-height:38px; padding:6px 10px; font-size:0.82rem;" data-bookmark="${d.id}">해제</button>
+                  <button type="button" class="btn btn-primary" style="min-height:36px; padding:5px 11px; font-size:0.8rem;" data-apply-dest="${d.id}">불러오기</button>
+                  <button type="button" class="btn btn-ghost" style="min-height:36px; padding:5px 10px; font-size:0.8rem;" data-bookmark="${d.id}">해제</button>
                 </div>
               </div>
             `;
           }).join('');
         }
 
-        // 체크리스트
         const checkEl = document.getElementById('checklistContainer');
         checkEl.innerHTML = state.checklist.map(item => `
           <div class="checklist-item">
@@ -1974,23 +2133,22 @@
               <input type="checkbox" data-check-id="${item.id}" ${item.checked ? 'checked' : ''} />
               <span>${item.text}</span>
             </label>
-            <button type="button" class="btn btn-ghost" style="min-height:36px; padding:4px 10px; font-size:0.8rem;" data-del-check="${item.id}" aria-label="항목 삭제">✕</button>
+            <button type="button" class="btn btn-ghost" style="min-height:34px; padding:4px 9px; font-size:0.78rem;" data-del-check="${item.id}" aria-label="항목 삭제">삭제</button>
           </div>
         `).join('');
       }
 
-      // 하단 고정 견적 바 & 배지 업데이트
       function renderBottomBar() {
         const plan = calcActivePlanEstimate();
         const remain = state.budget - plan.fixedTotal;
 
-        document.getElementById('miniDestName').textContent = `${plan.dest.emoji} ${plan.dest.name} (${getDaysLabel(state.days)})`;
+        document.getElementById('miniDestName').textContent = `${plan.dest.name} (${getDaysLabel(state.days)})`;
         document.getElementById('miniTotalPrice').textContent = formatKRW(plan.fixedTotal);
 
         const statusEl = document.getElementById('miniBudgetStatus');
         if (remain >= 0) {
           statusEl.textContent = `(잔액 ${formatKRW(remain)})`;
-          statusEl.style.color = 'var(--mint)';
+          statusEl.style.color = 'var(--success)';
         } else {
           statusEl.textContent = `(${formatKRW(Math.abs(remain))} 초과)`;
           statusEl.style.color = 'var(--danger)';
@@ -2001,7 +2159,6 @@
         document.getElementById('mobileSavedBadge').textContent = totalBadge;
       }
 
-      // 컨트롤 UI 동기화
       function syncControls() {
         const budgetRange = document.getElementById('budgetRange');
         budgetRange.value = state.budget;
@@ -2036,17 +2193,14 @@
         renderBottomBar();
       }
 
-      // 이벤트 바인딩
       function bindEvents() {
-        // 큰 글씨 토글
         document.getElementById('fontToggleBtn').addEventListener('click', () => {
           state.largeFont = !state.largeFont;
           saveState();
           applyFontSize();
-          showToast(state.largeFont ? '🔍 큰 글씨 모드로 전환되었습니다.' : '기본 글씨 크기로 돌아왔습니다.');
+          showToast(state.largeFont ? '큰 글씨 모드로 전환되었습니다.' : '기본 글씨 크기로 전환되었습니다.');
         });
 
-        // 탭 전환 (상단 + 하단 모바일)
         document.querySelectorAll('.nav-tab-btn, .mobile-nav-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             switchTab(btn.dataset.tab);
@@ -2061,7 +2215,6 @@
           switchTab('spot');
         });
 
-        // 예산 슬라이더 & 프리셋
         document.getElementById('budgetRange').addEventListener('input', (e) => {
           state.budget = Number(e.target.value);
           saveState();
@@ -2077,7 +2230,6 @@
           showToast(`예산이 ${formatKRW(state.budget)}으로 설정되었습니다.`);
         });
 
-        // 기간 선택
         document.getElementById('daysChipRow').addEventListener('click', (e) => {
           const btn = e.target.closest('.chip-btn');
           if (!btn) return;
@@ -2086,14 +2238,12 @@
           renderAll();
         });
 
-        // 출발지 선택
         document.getElementById('departureSelect').addEventListener('change', (e) => {
           state.departure = e.target.value;
           saveState();
           renderAll();
         });
 
-        // 테마 필터
         document.getElementById('themeChipRow').addEventListener('click', (e) => {
           const btn = e.target.closest('.chip-btn');
           if (!btn) return;
@@ -2102,7 +2252,6 @@
           renderAll();
         });
 
-        // 여행지 카드 내 액션 위임
         document.getElementById('destListContainer').addEventListener('click', (e) => {
           const bmBtn = e.target.closest('[data-bookmark]');
           if (bmBtn) {
@@ -2122,7 +2271,6 @@
           }
         });
 
-        // MVP 2 여행지 변경 및 옵션 선택
         document.getElementById('stayDestSelect').addEventListener('change', (e) => {
           selectDestination(e.target.value);
           renderAll();
@@ -2134,7 +2282,7 @@
           state.selectedTransportIdx = Number(item.dataset.transportIdx);
           saveState();
           renderAll();
-          showToast('✈️ 선택한 항공·교통편이 내 견적서에 반영되었습니다!');
+          showToast('선택한 항공 · 교통편이 견적서에 반영되었습니다.');
         });
 
         document.getElementById('stayOptionList').addEventListener('click', (e) => {
@@ -2143,10 +2291,9 @@
           state.selectedStayIdx = Number(item.dataset.stayIdx);
           saveState();
           renderAll();
-          showToast('🛏️ 선택한 숙소가 내 견적서에 반영되었습니다!');
+          showToast('선택한 숙소가 견적서에 반영되었습니다.');
         });
 
-        // MVP 3 여행지 변경, 필터, 관광지 담기
         document.getElementById('spotDestSelect').addEventListener('change', (e) => {
           selectDestination(e.target.value);
           renderAll();
@@ -2180,13 +2327,12 @@
               price: spot.price,
               category: spot.category
             });
-            showToast(`✅ '${spot.name}' 내 일정에 담았습니다!`);
+            showToast(`'${spot.name}' 일정을 추가했습니다.`);
           }
           saveState();
           renderAll();
         });
 
-        // 저장함 이벤트
         document.getElementById('savedSpotsList').addEventListener('click', (e) => {
           const jumpBtn = e.target.closest('[data-jump-spot]');
           if (jumpBtn) {
@@ -2199,7 +2345,7 @@
             state.addedSpots = state.addedSpots.filter(s => !(s.destId === state.selectedDestId && s.spotId === spotId));
             saveState();
             renderAll();
-            showToast('항목이 삭제되었습니다.');
+            showToast('일정에서 삭제되었습니다.');
           }
         });
 
@@ -2215,7 +2361,7 @@
           if (applyBtn) {
             selectDestination(applyBtn.dataset.applyDest);
             renderAll();
-            showToast(`🗺️ '${getDestById(state.selectedDestId).name}' 플랜을 불러왔습니다!`);
+            showToast(`'${getDestById(state.selectedDestId).name}' 플랜을 불러왔습니다.`);
             return;
           }
           const bmBtn = e.target.closest('[data-bookmark]');
@@ -2224,7 +2370,6 @@
           }
         });
 
-        // 체크리스트 이벤트
         document.getElementById('checklistContainer').addEventListener('change', (e) => {
           const cb = e.target.closest('[data-check-id]');
           if (!cb) return;
@@ -2249,23 +2394,22 @@
           if (e.key === 'Enter') addChecklistItem();
         });
 
-        // 견적 텍스트 복사 & 초기화
         document.getElementById('copyPlanBtn').addEventListener('click', () => {
           const plan = calcActivePlanEstimate();
           const lines = [
             `[짠내투어 초저가 여행 견적서]`,
-            `• 여행지: ${plan.dest.name} (${getDaysLabel(state.days)})`,
-            `• 목표 예산: ${formatKRW(state.budget)}`,
-            `• 교통편: ${plan.tOpt.title} (${formatKRW(plan.transportPrice)})`,
-            `• 숙소: ${state.days === 0 ? '없음 (0원)' : `${plan.sOpt.title} (${formatKRW(plan.stayPrice)})`}`,
-            `• 담은 일정 (${plan.currentSpots.length}곳): ${plan.currentSpots.map(s => `${s.name}(${s.price === 0 ? '무료' : formatKRW(s.price)})`).join(', ') || '없음'}`,
-            `• 확정 예약 합계: ${formatKRW(plan.fixedTotal)}`,
-            `• 식비 포함 총 예상액: ${formatKRW(plan.fullEstimated)}`
+            `· 여행지: ${plan.dest.name} (${getDaysLabel(state.days)})`,
+            `· 목표 예산: ${formatKRW(state.budget)}`,
+            `· 교통편: ${plan.tOpt.title} (${formatKRW(plan.transportPrice)})`,
+            `· 숙소: ${state.days === 0 ? '없음 (0원)' : `${plan.sOpt.title} (${formatKRW(plan.stayPrice)})`}`,
+            `· 담은 일정 (${plan.currentSpots.length}곳): ${plan.currentSpots.map(s => `${s.name}(${s.price === 0 ? '무료' : formatKRW(s.price)})`).join(', ') || '없음'}`,
+            `· 확정 예약 합계: ${formatKRW(plan.fixedTotal)}`,
+            `· 식비 포함 총 예상액: ${formatKRW(plan.fullEstimated)}`
           ].join('\n');
 
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(lines).then(() => {
-              showToast('📋 견적서 내용이 클립보드에 복사되었습니다!');
+              showToast('견적서 내용이 클립보드에 복사되었습니다.');
             }).catch(() => {
               showToast('견적서 텍스트가 준비되었습니다.');
             });
@@ -2279,7 +2423,7 @@
           state = JSON.parse(JSON.stringify(defaultState));
           saveState();
           switchTab('recommend');
-          showToast('🔄 모든 데이터가 초기화되었습니다.');
+          showToast('모든 데이터가 초기화되었습니다.');
         });
       }
 
@@ -2297,10 +2441,10 @@
         const dest = getDestById(destId);
         if (idx >= 0) {
           state.bookmarkedDests.splice(idx, 1);
-          showToast(`'${dest.name}' 찜 목록에서 해제되었습니다.`);
+          showToast(`'${dest.name}' 북마크가 해제되었습니다.`);
         } else {
           state.bookmarkedDests.push(destId);
-          showToast(`⭐ '${dest.name}' 여행지를 찜했습니다!`);
+          showToast(`'${dest.name}' 여행지를 북마크에 저장했습니다.`);
         }
         saveState();
         renderAll();
@@ -2318,10 +2462,9 @@
         input.value = '';
         saveState();
         renderSaved();
-        showToast('🎒 준비물 항목이 추가되었습니다.');
+        showToast('준비물 항목이 추가되었습니다.');
       }
 
-      // 초기 실행
       bindEvents();
       switchTab(state.activeTab || 'recommend');
     })();
