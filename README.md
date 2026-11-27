@@ -1,3 +1,3 @@
 # sososo616.github.io
 
-실습용
+학교 과제 실습용
